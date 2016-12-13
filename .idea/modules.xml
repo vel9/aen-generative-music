@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/generative-music.iml" filepath="$PROJECT_DIR$/.idea/modules/generative-music.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/generative-music_main.iml" filepath="$PROJECT_DIR$/.idea/modules/generative-music_main.iml" group="generative-music" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/generative-music_test.iml" filepath="$PROJECT_DIR$/.idea/modules/generative-music_test.iml" group="generative-music" />
+    </modules>
+  </component>
+</project>
