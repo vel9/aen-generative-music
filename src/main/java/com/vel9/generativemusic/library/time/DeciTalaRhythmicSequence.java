@@ -433,4 +433,39 @@ public enum DeciTalaRhythmicSequence implements RhythmicSequence {
         return Arrays.toString(rhythmicElements);
     }
 
+    public static RhythmicSequence[] getFastSequences(){
+       return new RhythmicSequence[]{
+               DVITIYA,
+               TRITIYA,
+               CATURTHAKA,
+               PANCAMA,
+               SIMHALILA,
+               KANDARPA,
+               RANGA,
+               VIRAVIKRAMA,
+               CACCARI,
+               YATILAGNA,
+               VARNABHINNA,
+               MICRA_VARNA,
+               VANAMALI,
+               MAKARANDA,
+               MANTHIKA2,
+               VISHAMA,
+               KANKALA_PURNA,
+               EKATALI,
+               MADANA,
+               LILA,
+               LAKSKMICA,
+               VARDHANA,
+               RAGAVARDHANA,
+               SHATTALA,
+               ANTARAKRIDA,
+               CANDATALA,
+               TRIPUTA,
+               MUKUNDA,
+               BHAGNA,
+               RAJAMRIGANKA
+       };
+    }
+
 }

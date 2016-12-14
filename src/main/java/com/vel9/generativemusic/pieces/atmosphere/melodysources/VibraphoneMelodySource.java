@@ -25,7 +25,7 @@ public class VibraphoneMelodySource {
         ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(64, 89), Util.getSeconds(6));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
-        TempoStrategy tempoStrategy = StrategyFactory.getTempoStrategy(70, 200, Util.getSeconds(3));
+        TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(70, 200, Util.getSeconds(3));
         DynamicsStrategy dynamicsStrategy = StrategyFactory.getDynamicsStrategy(2, 35, Util.getSeconds(4));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);

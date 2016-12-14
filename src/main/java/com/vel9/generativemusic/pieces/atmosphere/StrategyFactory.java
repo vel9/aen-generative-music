@@ -33,8 +33,12 @@ public class StrategyFactory {
         return new GradualDynamicsStrategy(minVelocity, maxVelocity, Direction.UP, rateOfChange);
     }
 
-    public static TempoStrategy getTempoStrategy(int minTempo, int maxTempo, int rateOfChange) {
+    public static TempoStrategy getUpwardTempoStrategy(int minTempo, int maxTempo, int rateOfChange) {
         return new GradualTempoStrategy(minTempo, maxTempo, Direction.UP, rateOfChange);
+    }
+
+    public static TempoStrategy getDownwardTempoStrategy(int minTempo, int maxTempo, int rateOfChange) {
+        return new GradualTempoStrategy(minTempo, maxTempo, Direction.DOWN, rateOfChange);
     }
 
     public static RhythmStrategy getRhythmStrategy(TempoStrategy tempoStrategy,

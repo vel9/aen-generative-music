@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.pieces.atmosphere.melodysources;
+package com.vel9.generativemusic.pieces.torrents.melodysources;
 
 import com.vel9.generativemusic.core.MelodySource;
 import com.vel9.generativemusic.core.dynamics.DynamicsStrategy;
@@ -6,10 +6,10 @@ import com.vel9.generativemusic.core.pitch.*;
 import com.vel9.generativemusic.core.time.RhythmStrategy;
 import com.vel9.generativemusic.core.time.RhythmicSequence;
 import com.vel9.generativemusic.core.time.TempoStrategy;
+import com.vel9.generativemusic.core.util.Util;
 import com.vel9.generativemusic.library.SimpleMelodySource;
 import com.vel9.generativemusic.library.time.DeciTalaRhythmicSequence;
 import com.vel9.generativemusic.pieces.atmosphere.StrategyFactory;
-import com.vel9.generativemusic.core.util.Util;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by levani on 12/12/16.
  */
-public class CopenhagenMelodySource {
+public class TorrentsCopenhagenMelodySource {
 
     public static MelodySource getMelody(){
 //        final int minNote = 36;
