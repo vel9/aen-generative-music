@@ -10,7 +10,7 @@ import com.vel9.generativemusic.core.util.Util;
 import com.vel9.generativemusic.library.SimpleMelodySource;
 import com.vel9.generativemusic.library.time.DeciTalaRhythmicSequence;
 import com.vel9.generativemusic.library.time.SilentRhythmicSequence;
-import com.vel9.generativemusic.pieces.atmosphere.StrategyFactory;
+import com.vel9.generativemusic.pieces.StrategyFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,14 +19,14 @@ import java.util.List;
 /**
  * Created by levani on 12/12/16.
  */
-public class TorrentsGlassArmonicaMelodySource {
+public class TwoGlockenMelodySource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(69, 89), Util.getSeconds(5));
+        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(64, 102), Util.getSeconds(6));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
-        TempoStrategy tempoStrategy = StrategyFactory.getDownwardTempoStrategy(170, 110, Util.getSeconds(10));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getDynamicsStrategy(5, 40, Util.getSeconds(1));
+        TempoStrategy tempoStrategy = StrategyFactory.getDownwardTempoStrategy(70, 200, Util.getSeconds(3));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getDownwardDynamicsStrategy(2, 35, Util.getSeconds(4));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }
@@ -34,8 +34,8 @@ public class TorrentsGlassArmonicaMelodySource {
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{new Scale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
                 new Scale(BaseScale.MINOR, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.F_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.C, minNote, maxNote),
+                new Scale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
+                new Scale(BaseScale.MINOR, NoteType.C, minNote, maxNote),
                 new Scale(BaseScale.MINOR, NoteType.A_FLAT, minNote, maxNote),
                 new Scale(BaseScale.MODE2, NoteType.F_SHARP, minNote, maxNote),
                 new Scale(BaseScale.MODE2, NoteType.D_SHARP, minNote, maxNote),
@@ -53,4 +53,5 @@ public class TorrentsGlassArmonicaMelodySource {
         }
         return rhythmicSequences;
     }
+
 }

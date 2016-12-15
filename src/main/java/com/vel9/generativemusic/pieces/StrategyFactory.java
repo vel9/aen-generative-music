@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.pieces.atmosphere;
+package com.vel9.generativemusic.pieces;
 
 import com.vel9.generativemusic.core.dynamics.DynamicsStrategy;
 import com.vel9.generativemusic.core.pitch.NoteStrategy;
@@ -29,8 +29,12 @@ public class StrategyFactory {
         return new PlainchantNoteStrategy(scaleStrategy);
     }
 
-    public static DynamicsStrategy getDynamicsStrategy(int minVelocity, int maxVelocity, int rateOfChange) {
+    public static DynamicsStrategy getUpwardDynamicsStrategy(int minVelocity, int maxVelocity, int rateOfChange) {
         return new GradualDynamicsStrategy(minVelocity, maxVelocity, Direction.UP, rateOfChange);
+    }
+
+    public static DynamicsStrategy getDownwardDynamicsStrategy(int minVelocity, int maxVelocity, int rateOfChange) {
+        return new GradualDynamicsStrategy(minVelocity, maxVelocity, Direction.DOWN, rateOfChange);
     }
 
     public static TempoStrategy getUpwardTempoStrategy(int minTempo, int maxTempo, int rateOfChange) {

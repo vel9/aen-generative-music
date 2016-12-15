@@ -1,11 +1,11 @@
 package com.vel9.generativemusic.pieces.atmosphere;
 
 import com.vel9.generativemusic.core.perform.Instrument;
-import com.vel9.generativemusic.pieces.atmosphere.melodysources.CopenhagenMelodySource;
-import com.vel9.generativemusic.pieces.atmosphere.melodysources.ApolloMelodySource;
-import com.vel9.generativemusic.pieces.atmosphere.melodysources.GuitarMelodySource;
-import com.vel9.generativemusic.pieces.atmosphere.melodysources.TongueDrumMelodySource;
-import com.vel9.generativemusic.pieces.atmosphere.melodysources.VibraphoneMelodySource;
+import com.vel9.generativemusic.pieces.atmosphere.melodysources.OneCopenhagenMelodySource;
+import com.vel9.generativemusic.pieces.atmosphere.melodysources.OneApolloMelodySource;
+import com.vel9.generativemusic.pieces.atmosphere.melodysources.OneGuitarMelodySource;
+import com.vel9.generativemusic.pieces.atmosphere.melodysources.OneTongueDrumMelodySource;
+import com.vel9.generativemusic.pieces.atmosphere.melodysources.OneVibraphoneMelodySource;
 
 /**
  *
@@ -25,10 +25,10 @@ import com.vel9.generativemusic.pieces.atmosphere.melodysources.VibraphoneMelody
 public class AtmosphereMain {
 
     public static void main(String[] args) {
-        Instrument.play(VibraphoneMelodySource.getMelody(), 0);
-        Instrument.play(GuitarMelodySource.getMelody(), 1);
-        Instrument.play(ApolloMelodySource.getMelody(), 2);
-        Instrument.play(TongueDrumMelodySource.getMelody(), 3);
-        Instrument.play(CopenhagenMelodySource.getMelody(), 4);
+        Instrument.play(OneVibraphoneMelodySource.getMelody(), 0);
+        Instrument.play(OneGuitarMelodySource.getMelody(), 1);
+        Instrument.play(OneApolloMelodySource.getMelody(), 2);
+        Instrument.play(OneTongueDrumMelodySource.getMelody(), 3);
+        Instrument.play(OneCopenhagenMelodySource.getMelody(), 4);
     }
 }

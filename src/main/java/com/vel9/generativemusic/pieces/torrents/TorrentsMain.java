@@ -21,10 +21,12 @@ import com.vel9.generativemusic.pieces.torrents.melodysources.*;
 public class TorrentsMain {
 
     public static void main(String[] args) {
-        Instrument.play(TorrentsVibraphoneMelodySource.getMelody(), 0);
-        Instrument.play(TorrentsMutedPianoMelodySource.getMelody(), 1);
-        Instrument.play(TorrentsGlassArmonicaMelodySource.getMelody(), 2);
-        Instrument.play(TorrentsTongueDrumMelodySource.getMelody(), 3);
-        Instrument.play(TorrentsCopenhagenMelodySource.getMelody(), 4);
+        Instrument.play(TwoPluckedPianoSource.getMelody(), 0);
+        Instrument.play(TwoMutedPianoMelodySource.getMelody(), 1);
+        Instrument.play(TwoMalletPianoSource.getMelody(), 5);
+
+        Instrument.play(TwoGlassArmonicaMelodySource.getMelody(), 2);
+        Instrument.play(TwoGlockenMelodySource.getMelody(), 3);
+        Instrument.play(TwoHarmoniumMelodySource.getMelody(), 4);
     }
 }
