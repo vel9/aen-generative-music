@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.pieces.atmosphere.melodysources;
+package com.vel9.generativemusic.pieces.one.melodysources;
 
 import com.vel9.generativemusic.core.MelodySource;
 import com.vel9.generativemusic.core.dynamics.DynamicsStrategy;
