@@ -4,8 +4,11 @@ import com.vel9.generativemusic.core.support.DaemonCallback;
 import com.vel9.generativemusic.core.support.Direction;
 import com.vel9.generativemusic.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.core.time.TempoStrategy;
-import com.vel9.generativemusic.core.util.Log;
 
+/**
+ * Impl of TempoStrategy which gradually moves from provided min to max, max to min values
+ * at the given rate.
+ */
 public class GradualTempoStrategy implements TempoStrategy, DaemonCallback {
 
     private static final String TAG = GradualTempoStrategy.class.getSimpleName();
@@ -13,7 +16,6 @@ public class GradualTempoStrategy implements TempoStrategy, DaemonCallback {
     private final int minBpm;
     private final int maxBpm;
     private Direction direction;
-    private RegularIntervalDaemon regularIntervalDaemon;
 
     private int bpm;
 
@@ -24,7 +26,7 @@ public class GradualTempoStrategy implements TempoStrategy, DaemonCallback {
 
         this.bpm = getStartingBpm();
 
-        this.regularIntervalDaemon = new RegularIntervalDaemon(this, rateInMillis);
+        RegularIntervalDaemon regularIntervalDaemon = new RegularIntervalDaemon(this, rateInMillis);
         regularIntervalDaemon.start();
     }
 
@@ -33,6 +35,7 @@ public class GradualTempoStrategy implements TempoStrategy, DaemonCallback {
         return this.direction == Direction.UP? this.minBpm : this.maxBpm;
     }
 
+    @Override
     public int getBpm(){
         return this.bpm;
     }
@@ -50,8 +53,6 @@ public class GradualTempoStrategy implements TempoStrategy, DaemonCallback {
         } else {
             this.bpm--;
         }
-
-        Log.config(TAG, "current bpm: " + this.bpm);
     }
 
 }

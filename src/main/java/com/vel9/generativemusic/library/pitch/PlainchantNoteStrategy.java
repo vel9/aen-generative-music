@@ -13,7 +13,8 @@ import java.util.List;
 import static com.vel9.generativemusic.library.pitch.PlainchantIntervalSequence.*;
 
 /**
- * Created by levani on 12/4/16.
+ * Impl of NoteStrategy which uses Sequences established in Plainchant melodies
+ * as a basis for deciding which note to provide next.
  */
 public class PlainchantNoteStrategy implements NoteStrategy {
 
@@ -37,7 +38,8 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         this.intervalSequences = getIntervalSequences();
     }
 
-    public static List<IntervalSequence> getIntervalSequences(){
+    /* builds lst of plainchant intervals to be used */
+    private static List<IntervalSequence> getIntervalSequences(){
         List<IntervalSequence> intervalSequences = new ArrayList<>();
         // index 0 = start ascent
         // sequences with more up than down movement
@@ -55,6 +57,7 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         return intervalSequences;
     }
 
+    /* sets the default "first note already played" as the one in the middle of the available notes */
     private int getDefaultPrevNoteIndex(ScaleStrategy scaleStrategy) {
         List<Note> allNotes = scaleStrategy.getScale().getAllNotes();
         Log.config(TAG, allNotes);
@@ -62,11 +65,13 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         return allNotes.size()/2;
     }
 
+    /* provides the max distance in pitch (up or down) when selecting the next note */
     private int getMaxJump(ScaleStrategy scaleStrategy) {
         //-1 so we don't include a higher octave version of the starting time
         return scaleStrategy.getScale().scaleSize() - 1;
     }
 
+    @Override
     public Note nextNote() {
         List<Note> allNotes = this.scaleStrategy.getScale().getAllNotes();
         int[] sequence = this.intervalSequences.get(this.sequenceIndex).getIntervalSequence();
@@ -77,7 +82,7 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         if (!perhapseManageRangeEdges(allNotes, nextNoteIndex)
                 && this.prevNoteIndex != nextNoteIndex){
             // only move to next sequence element if notes are different
-            // and we're not at the edge
+            // and we're not at the edge (beginning or end of allNotes)
             this.prevNoteIndex = nextNoteIndex;
             moveToNextSequenceElement(sequence);
         }
@@ -85,6 +90,7 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         return allNotes.get(nextNoteIndex);
     }
 
+    /* stores which notes have been played in the current sequences */
     private void saveNoteIndex(int[] sequence, int nextNoteIndex) {
         if (this.sequenceElementIndex == 0){
             indexesInCurrentSequence = new int[sequence.length];
@@ -97,6 +103,14 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         }
     }
 
+    /**
+     * If beginning or end of all available notes is achived direct the algorithm to sequence which will
+     * move the pitch generation away from the edges.
+     *
+     * @param allNotes all available notes
+     * @param nextNoteIndex next proposed note index
+     * @return true if an edge has been reached
+     */
     private boolean perhapseManageRangeEdges(List<Note> allNotes, int nextNoteIndex) {
         if (nextNoteIndex == 0){
             this.sequenceIndex = 0; // raise the time

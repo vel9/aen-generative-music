@@ -6,14 +6,11 @@ import com.vel9.generativemusic.core.time.RhythmStrategy;
 import com.vel9.generativemusic.core.time.RhythmicElement;
 import com.vel9.generativemusic.core.time.RhythmicSequence;
 import com.vel9.generativemusic.core.time.TempoStrategy;
-import com.vel9.generativemusic.core.util.Log;
 import com.vel9.generativemusic.core.util.Util;
 
 import java.util.List;
 
-/**
- * Created by levani on 12/5/16.
- */
+//* Impl of RhythmStrategy which randomly selects from a list of provided rhythmic sequences */
 public class RandomRhythmStrategy implements RhythmStrategy {
 
     private static final String TAG = RandomRhythmStrategy.class.getSimpleName();
@@ -33,16 +30,14 @@ public class RandomRhythmStrategy implements RhythmStrategy {
         this.rhythmicSequences = rhythmicSequences;
     }
 
+    @Override
     public DurationVelocity next() {
         RhythmicSequence rhythmicSequence = this.rhythmicSequences.get(this.sequenceIndex);
-        if (this.sequenceElementIndex == 0){
-            Log.config(TAG, rhythmicSequence);
-        }
         RhythmicElement[] elements = rhythmicSequence.getRhythmicSequence();
         RhythmicElement element = elements[this.sequenceElementIndex];
         updateIndexes(elements);
 
-        // note that since we don't do any logic off whether the sequence is a silence or not
+        // don't do any logic off whether the sequence is a silence or not
         final int bpm = this.tempoStrategy.getBpm();
         final int velocity = this.dynamicsStrategy.getVelocity(this.sequenceElementIndex, rhythmicSequence);
 
@@ -55,10 +50,6 @@ public class RandomRhythmStrategy implements RhythmStrategy {
             this.sequenceElementIndex = 0; // reset
             this.sequenceIndex = Util.getRandom(0, this.rhythmicSequences.size() - 1);
         }
-    }
-
-    public boolean hasNext(){
-        return true;
     }
 
 }

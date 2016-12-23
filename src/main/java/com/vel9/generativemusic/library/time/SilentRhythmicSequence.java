@@ -5,9 +5,7 @@ import com.vel9.generativemusic.core.time.RhythmicSequence;
 
 import java.util.Arrays;
 
-/**
- * Created by levani on 12/12/16.
- */
+/* Impl of RhythmicSequence which represents Silence */
 public enum SilentRhythmicSequence implements RhythmicSequence {
     QUADRUPLE_WHOLE_SILENCE(RhythmicElement.WHOLE, RhythmicElement.WHOLE, RhythmicElement.WHOLE, RhythmicElement.WHOLE),
     TRIPLE_WHOLE_SILENCE(RhythmicElement.WHOLE, RhythmicElement.WHOLE, RhythmicElement.WHOLE),

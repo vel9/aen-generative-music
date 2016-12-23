@@ -7,22 +7,19 @@ import com.vel9.generativemusic.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.core.util.Log;
 import com.vel9.generativemusic.core.util.Util;
 
-/**
- * Created by levani on 12/9/16.
- */
+/* Impl of ScaleStragey which randomly selects form the provided scales at the provided rate */
 public class ChangeScaleStrategy implements ScaleStrategy, DaemonCallback {
 
     private static final String TAG = ChangeScaleStrategy.class.getSimpleName();
 
     private Scale scale;
     private Scale[] scales;
-    private RegularIntervalDaemon regularIntervalDaemon;
 
     public ChangeScaleStrategy(int rateInMillis, Scale... scales){
         this.scales = scales;
         this.scale = getStartingScale();
 
-        this.regularIntervalDaemon = new RegularIntervalDaemon(this, rateInMillis);
+        RegularIntervalDaemon regularIntervalDaemon = new RegularIntervalDaemon(this, rateInMillis);
         regularIntervalDaemon.start();
     }
 

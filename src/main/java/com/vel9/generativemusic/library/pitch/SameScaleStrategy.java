@@ -3,9 +3,7 @@ package com.vel9.generativemusic.library.pitch;
 import com.vel9.generativemusic.core.pitch.Scale;
 import com.vel9.generativemusic.core.pitch.ScaleStrategy;
 
-/**
- * Created by levani on 12/4/16.
- */
+/* Impl of ScaleStrategy which simple returns the same scale */
 public class SameScaleStrategy implements ScaleStrategy {
 
     private Scale scale;

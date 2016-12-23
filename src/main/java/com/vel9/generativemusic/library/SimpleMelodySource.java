@@ -9,7 +9,7 @@ import com.vel9.generativemusic.core.support.DurationVelocity;
 import com.vel9.generativemusic.core.time.RhythmStrategy;
 
 /**
- * Created by levani on 12/12/16.
+ * Impl of MelodySource which returns the "next" from both NoteStrategy and RhythmStrategy
  */
 public class SimpleMelodySource implements MelodySource {
 
@@ -23,6 +23,7 @@ public class SimpleMelodySource implements MelodySource {
         this.rhythmStrategy = rhythmStrategy;
     }
 
+    /* Honors the DurationVelocity.isSilence indicator by providing a silent Note if true */
     @Override
     public NoteContainer next(){
         DurationVelocity durationVelocity = this.rhythmStrategy.next();

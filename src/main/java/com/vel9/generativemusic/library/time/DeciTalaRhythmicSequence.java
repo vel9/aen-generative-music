@@ -7,7 +7,7 @@ import com.vel9.generativemusic.core.time.RhythmicSequence;
 import java.util.Arrays;
 
 /**
- * Created by levani on 12/6/16.
+ * Provides a number of RhythmicSequence representations of the amazing hindu deci talas
  */
 public enum DeciTalaRhythmicSequence implements RhythmicSequence {
 
