@@ -38,25 +38,6 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         this.intervalSequences = getIntervalSequences();
     }
 
-    /* builds lst of plainchant intervals to be used */
-    private static List<IntervalSequence> getIntervalSequences(){
-        List<IntervalSequence> intervalSequences = new ArrayList<>();
-        // index 0 = start ascent
-        // sequences with more up than down movement
-        intervalSequences.add(SCANDICUS_FLEXUS); // +1
-        intervalSequences.add(SCANDICUS_FLEXUS); // +1
-        intervalSequences.add(SCANDICUS_FLEXUS); // +1
-        // sequences with equal up and down movements
-        intervalSequences.add(PORRECTUS); // 0
-        intervalSequences.add(TORCULUS); // 0
-        // index intervalSequences.size() - 3 to force decent
-        // sequencesw with more down than up movement
-        intervalSequences.add(CLIMACUS); // -1
-        intervalSequences.add(PORRECTUS_FLEXUS); // -1
-        intervalSequences.add(CLIMACUS_RESUPINUS); // -1
-        return intervalSequences;
-    }
-
     /* sets the default "first note already played" as the one in the middle of the available notes */
     private int getDefaultPrevNoteIndex(ScaleStrategy scaleStrategy) {
         List<Note> allNotes = scaleStrategy.getScale().getAllNotes();
@@ -127,7 +108,20 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         return false;
     }
 
-    /* sequenceElement represents the direction of leap */
+    /**
+     * Provides the next note based on the value of jumpDirection (up or down)
+     * and a random value between current note and furthest allowed note.
+     *
+     * If the proposed nextNote is outside the range of available notes
+     * or if it has been already played, check if algorithm is in a corner (see isInACorner()).
+     *
+     * If yes, then recursively call itself again until we find a note which satisfies
+     * required parameters. Otherwise, return the proposed note index.
+     *
+     * @param allNotes Available notes
+     * @param jumpDirection direction in which to seek the next note
+     * @return
+     */
     private int getNextNoteIndex(List<Note> allNotes, int jumpDirection) {
         int absJumpVal = Util.getRandom(0, this.maxJump);
         int jumpVal = absJumpVal * jumpDirection;
@@ -143,16 +137,17 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         }
     }
 
-    private int handleCorner(List<Note> allNotes, int nextNoteIndex) {
-        if (nextNoteIndex < 0){
-            return 0;
-        } else if (nextNoteIndex >= allNotes.size()){
-            return allNotes.size() - 1;
-        } else {
-            return nextNoteIndex;
-        }
-    }
-
+    /**
+     * It is possible for the algorithm to get in a corner when
+     * there is, for example, only one note available in the up direction,
+     * and that note has already been played during current sequence.
+     *
+     * Similar situation is possible in the down direction.
+     *
+     * @param allNotes all possible notes
+     * @param jumpDirection direction in which the next note is expected to be in
+     * @return true if there are no more available notes in proposed direction
+     */
     private boolean isInACorner(List<Note> allNotes, int jumpDirection) {
         if (jumpDirection == 1) {
             for (int i = this.prevNoteIndex + 1; i < allNotes.size(); i++) {
@@ -171,6 +166,25 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         }
     }
 
+    /**
+     * handles corner case simply by returning the same note,
+     *
+     * The algorithm will "straighten" itself out
+     * @param allNotes all possible notes
+     * @param nextNoteIndex proposed next note index
+     * @return next note index
+     */
+    private int handleCorner(List<Note> allNotes, int nextNoteIndex) {
+        if (nextNoteIndex < 0){
+            return 0;
+        } else if (nextNoteIndex >= allNotes.size()){
+            return allNotes.size() - 1;
+        } else {
+            return nextNoteIndex;
+        }
+    }
+
+    /* determines if note has already been played in current sequence */
     private boolean isAlreadyPlayed(int nextNoteIndex){
         if (indexesInCurrentSequence == null){
             return false;
@@ -193,5 +207,24 @@ public class PlainchantNoteStrategy implements NoteStrategy {
                 this.sequenceIndex = 0; // reset;
             }
         }
+    }
+
+    /* builds lst of plainchant intervals to be used */
+    private static List<IntervalSequence> getIntervalSequences(){
+        List<IntervalSequence> intervalSequences = new ArrayList<>();
+        // index 0 = start ascent
+        // sequences with more up than down movement
+        intervalSequences.add(SCANDICUS_FLEXUS); // +1
+        intervalSequences.add(SCANDICUS_FLEXUS); // +1
+        intervalSequences.add(SCANDICUS_FLEXUS); // +1
+        // sequences with equal up and down movements
+        intervalSequences.add(PORRECTUS); // 0
+        intervalSequences.add(TORCULUS); // 0
+        // index intervalSequences.size() - 3 to force decent
+        // sequencesw with more down than up movement
+        intervalSequences.add(CLIMACUS); // -1
+        intervalSequences.add(PORRECTUS_FLEXUS); // -1
+        intervalSequences.add(CLIMACUS_RESUPINUS); // -1
+        return intervalSequences;
     }
 }
