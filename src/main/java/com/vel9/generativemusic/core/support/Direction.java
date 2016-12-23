@@ -1,8 +1,6 @@
 package com.vel9.generativemusic.core.support;
 
-/**
- * Created by levani on 12/8/16.
- */
+/* Simple generic enum for providing direction, can be used in many contexts such as pitch or tempo */
 public enum Direction {
     UP,
     DOWN;

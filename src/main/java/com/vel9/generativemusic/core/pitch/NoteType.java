@@ -1,6 +1,6 @@
 package com.vel9.generativemusic.core.pitch;
 
-// used for algo: http://www.electronics.dit.ie/staff/tscarff/Music_technology/midi/midi_note_numbers_for_octaves.htm
+//Ref: used for algo: http://www.electronics.dit.ie/staff/tscarff/Music_technology/midi/midi_note_numbers_for_octaves.htm
 public enum NoteType {
     C(0),
     C_SHARP(1),
@@ -25,7 +25,6 @@ public enum NoteType {
     NoteType(int value){
         this.value = value;
     }
-
     public int getValue(){
         return this.value;
     }

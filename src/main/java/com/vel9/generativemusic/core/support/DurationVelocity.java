@@ -1,8 +1,6 @@
 package com.vel9.generativemusic.core.support;
 
-/**
- * Created by levani on 12/4/16.
- */
+/* Container for holding duration, velocity values and the silent indicator */
 public class DurationVelocity {
 
     private int duration;

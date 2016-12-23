@@ -7,7 +7,9 @@ import java.util.Arrays;
 import static com.vel9.generativemusic.core.support.Constants.MINUTE_IN_MILLIS;
 
 /**
- * Created by levani on 12/5/16.
+ * Provides representation of a rhythm's building block. Including public constants of the
+ * more common rhythms for easy access. More complex rhythmic elements that can be subdivided
+ * into multiple RhythmicElements can also be built.
  */
 public class RhythmicElement {
 
@@ -33,16 +35,24 @@ public class RhythmicElement {
 
     private RhythmicElementType[] rhythmicElementTypes;
 
+    /**
+     * If more than one RhythmicElementType is provided, a "tie-ing" effect will be achieved.
+     *
+     * For example, if a QUARTER and EIGHTH are provided, the RhythmicElement will represent
+     * a dotted quarter (quarter + eighth).
+     *
+     * @param rhythmicElementTypes rhythmic element types which make up the rhythmic element
+     */
     public RhythmicElement(RhythmicElementType... rhythmicElementTypes){
-        // providing more than one RhythmicElementType intends "tie-ing" the notes
-        // their values will be combined into a single duration
         this.rhythmicElementTypes = rhythmicElementTypes;
     }
 
-    private static final int getWholeNoteValueInMillis(int tempoBmp){
+    /** helper method for determining the whole note value given tempo in beats per minute */
+    private static int getWholeNoteValueInMillis(int tempoBmp){
         return MINUTE_IN_MILLIS/(tempoBmp/4);
     }
 
+    /* algorithm for providing the duration, in milliseconds, of RhythmicElement given current tempo */
     public int getDuration(int tempoBpm){
         final int wholeNoteValInMillis = getWholeNoteValueInMillis(tempoBpm);
         int duration = 0;
@@ -52,7 +62,7 @@ public class RhythmicElement {
         return duration;
     }
 
-    // tempo should be provided in BMP
+    /* helper method for determining value of RhythmicElementType given wholeNoteValInMillis value */
     private int getDuration(final RhythmicElementType rhythmicElementType, final int wholeNoteValInMillis){
         Log.config(TAG, wholeNoteValInMillis);
         final int halfNoteTriplet = wholeNoteValInMillis/3;

@@ -3,13 +3,15 @@ package com.vel9.generativemusic.core.perform;
 import com.vel9.generativemusic.core.MelodySource;
 import com.vel9.generativemusic.core.pitch.NoteContainer;
 import com.vel9.generativemusic.core.support.DurationVelocity;
-import com.vel9.generativemusic.core.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by levani on 12/6/16.
+ * Takes musical data provided by the MelodySource
+ * and sends the data to the Performer (which handles more low-level detail like the MIDI communication)
+ * This class contains a TimerTask which schedules an execution of a provided
+ * musical event for the provided duration.
  */
 public class Instrument {
 
@@ -19,10 +21,11 @@ public class Instrument {
     private Performer performer;
 
     private Instrument(MelodySource melodySource, int midiChannel){
-        this.performer = PerformanceSupport.getInstrument(midiChannel);
+        this.performer = PerformanceSupport.createPerformer(midiChannel);
         this.melodySource = melodySource;
     }
 
+    /* helper method for creating and playing an instance of Instrument */
     public static void play(MelodySource melodySource, int midiChannel){
         Instrument instrument = new Instrument(melodySource, midiChannel);
         instrument.play();
@@ -37,7 +40,7 @@ public class Instrument {
     private class PlayNoteTask extends TimerTask {
         private Timer timer;
 
-        public PlayNoteTask(Timer timer){
+        PlayNoteTask(Timer timer){
             this.timer = timer;
         }
 
@@ -45,7 +48,6 @@ public class Instrument {
         public void run(){
             NoteContainer noteContainer = Instrument.this.melodySource.next();
             DurationVelocity durationVelocity = noteContainer.getDurationVelocity();
-            Log.config(TAG, "duration: " + durationVelocity.getDuration() + ", velocity: " + durationVelocity.getVelocity() + ", " +  noteContainer.getNote());
             Instrument.this.performer.playNote(durationVelocity.getVelocity(), noteContainer.getNote());
             timer.schedule(new Instrument.PlayNoteTask(timer), durationVelocity.getDuration());
         }

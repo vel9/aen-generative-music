@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * When provided with the base scale (which is 12 pitches or less), and parameters
+ * such as min note, max note, and the first note of scale, this class
+ * returns a list of all possible notes given the parameters.
+ */
 public class Scale {
 
     private static final String TAG = Scale.class.getSimpleName();
@@ -18,6 +23,7 @@ public class Scale {
 
     /* builds a list of all notes in this scale */
     private List<Note> buildAllNotes(NoteType[] baseNotes, NoteType startingNote, int minNoteVal, int maxNoteVal) {
+        /* if desired scale is A Major, starting note would be NoteType.A */
         int offset = startingNote.getValue() - baseNotes[0].getValue();
         List<Note> allNotes = new ArrayList<>();
         // i represents current octave

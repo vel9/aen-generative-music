@@ -4,9 +4,7 @@ import com.vel9.generativemusic.core.support.Constants;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by levani on 12/7/16.
- */
+/* helper utilities for common use throughout app */
 public class Util {
     // ref: http://stackoverflow.com/a/363692
     public static int getRandom(int min, int max){

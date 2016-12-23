@@ -2,44 +2,42 @@ package com.vel9.generativemusic.core.perform;
 
 import com.vel9.generativemusic.core.util.Log;
 
-import javax.sound.midi.Instrument;
-import javax.sound.midi.*;
+import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Receiver;
 
-// reference for instrument numbers: https://www.midi.org/specifications/item/gm-level-1-sound-set
+/**
+ * Handles more low-level detail in setting up the MIDI Receiver,
+ * a representation of the server which will receive MIDI Messages send by the Performer
+ *
+ * Also provides a static Method for creating Performers
+ */
 public class PerformanceSupport {
 
     private static Receiver receiver;
     private static final String TAG = PerformanceSupport.class.getSimpleName();
 
+    /* initializes the MIDI Receiver */
     static{
+        initMidiReceiver();
+    }
+
+    private static void initMidiReceiver() {
         Log.config(TAG, "Available MidiDevices on System: " + printMidiDevices());
         try {
             receiver = MidiSystem.getReceiver();
-            Log.config(TAG, "Current Receiver: " + receiver.getClass().getSimpleName());
         } catch (Exception e){
             e.printStackTrace();
-            throw new IllegalStateException(e);
+            throw new IllegalStateException("Could not initialize Receiver", e);
         }
     }
 
-    public static Performer getInstrument(int midiChannel) {
+    public static Performer createPerformer(int midiChannel) {
         return new Performer(midiChannel, receiver);
     }
 
-    public MidiChannel getMidiChannel(int midiChannel, int instrument) throws MidiUnavailableException {
-        Synthesizer synthesizer = getSynthesizer();
-        MidiChannel channel = synthesizer.getChannels()[midiChannel];
-        Instrument[] instruments = synthesizer.getAvailableInstruments();
-        channel.programChange(instruments[instrument].getPatch().getProgram());
-        return channel;
-    }
-
-    private Synthesizer getSynthesizer() throws MidiUnavailableException {
-        Synthesizer synthesizer = MidiSystem.getSynthesizer();
-        synthesizer.open();
-        return synthesizer;
-    }
-
+    /* helper method for printing available MIDI devices on system */
     private static String printMidiDevices(){
         StringBuilder sb = new StringBuilder();
         for (MidiDevice.Info info : MidiSystem.getMidiDeviceInfo()){

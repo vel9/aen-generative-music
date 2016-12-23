@@ -3,13 +3,10 @@ package com.vel9.generativemusic.core.support;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by levani on 12/8/16.
- */
+/* Simple daemon process which calls the DaemonCallback at regular intervals */
 public class RegularIntervalDaemon {
 
-    // interval in millis
-    private int interval;
+    private int interval; // in millis
     private DaemonCallback callback;
 
     public RegularIntervalDaemon(DaemonCallback callback, int interval){
@@ -25,7 +22,7 @@ public class RegularIntervalDaemon {
     private class Task extends TimerTask {
         private Timer timer;
 
-        public Task(Timer timer){
+        Task(Timer timer){
             this.timer = timer;
         }
 

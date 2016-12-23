@@ -1,8 +1,6 @@
 package com.vel9.generativemusic.core.pitch;
 
-/**
- * Created by levani on 12/7/16.
- */
+/* provides various "base" scales, only allows for scales that are 12 tones or less */
 public enum BaseScale {
 
     MAJOR(NoteType.C, NoteType.D, NoteType.E, NoteType.F, NoteType.G, NoteType.A, NoteType.B),

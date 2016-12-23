@@ -7,11 +7,14 @@ import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 
 // ref: https://java.net/projects/gervill/sources/Mercurial/content/src/com/sun/media/sound/SoftChannel.java?rev=289
+
+/**
+ * Provides low-level implementation for sending MIDI messages to a Receiver
+ */
 public class Performer {
 
     private int channel;
     private Receiver receiver;
-    private Note[] prevNotes;
     private Note prevNote;
 
     Performer(int channel, Receiver receiver){
@@ -19,6 +22,7 @@ public class Performer {
         this.receiver = receiver;
     }
 
+    /* bridge between framework's Note object and the MIDI message */
     public void playNote(int velocity, Note note){
         stopPrevious();
         if (note.getValue() != Constants.SILENT_NOTE){
@@ -27,14 +31,12 @@ public class Performer {
         }
     }
 
-    private Note copyNote(Note original){
-        return new Note(original.getValue());
-    }
-
-    public void noteOn(int noteNumber, int velocity) {
+    /* starts playing provided note at provided velocity */
+    private void noteOn(int noteNumber, int velocity) {
         sendMessage(ShortMessage.NOTE_ON, noteNumber, velocity);
     }
 
+    /* sends any midi message, uses ShortMessage impl */
     private void sendMessage(int event, int noteNumber, int velocity){
         try {
             ShortMessage message = new ShortMessage();
@@ -45,14 +47,20 @@ public class Performer {
         }
     }
 
-    public void noteOff(int noteNumber, int velocity) {
+    /* stop note from playing */
+    private void noteOff(int noteNumber, int velocity) {
         sendMessage(ShortMessage.NOTE_OFF, noteNumber, velocity);
     }
 
-    public void stopPrevious(){
+    /* sends noteOff signal to stop previously playing note from playing */
+    private void stopPrevious(){
         if (this.prevNote == null){
             return;
         }
         noteOff(this.prevNote.getValue(), 60);
+    }
+
+    private Note copyNote(Note original){
+        return new Note(original.getValue());
     }
 }

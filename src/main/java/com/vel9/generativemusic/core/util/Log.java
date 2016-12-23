@@ -5,6 +5,7 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/* simple logger for the app */
 public class Log {
 
     private static final String APP_LOGGER = "AppLogger";
