@@ -34,6 +34,7 @@ public class GradualDynamicsStrategy implements DynamicsStrategy, DaemonCallback
     }
 
     /* accents the first element of a rhythmic sequence */
+    @Override
     public int getVelocity(int sequenceElementIndex, RhythmicSequence rhythmicSequence){
         return sequenceElementIndex == 0? this.velocity + ACCENT : this.velocity;
     }

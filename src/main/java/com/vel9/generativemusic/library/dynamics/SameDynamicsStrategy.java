@@ -12,6 +12,7 @@ public class SameDynamicsStrategy implements DynamicsStrategy {
         this.velocity = velocity;
     }
 
+    @Override
     public int getVelocity(int sequenceElementIndex, RhythmicSequence rhythmicSequence){
         return this.velocity;
     }
