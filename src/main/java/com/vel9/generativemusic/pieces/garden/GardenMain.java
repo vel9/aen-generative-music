@@ -1,7 +1,7 @@
-package com.vel9.generativemusic.pieces.two;
+package com.vel9.generativemusic.pieces.garden;
 
 import com.vel9.generativemusic.core.perform.Instrument;
-import com.vel9.generativemusic.pieces.two.melodysources.*;
+import com.vel9.generativemusic.pieces.garden.melodysources.*;
 
 /**
  *
@@ -18,15 +18,15 @@ import com.vel9.generativemusic.pieces.two.melodysources.*;
  7	108	109	110	111	112	113	114	115	116	117	118	119
  8	120	121	122	123	124	125	126	127
  */
-public class TwoMain {
+public class GardenMain {
 
     public static void main(String[] args) {
-        Instrument.play(TwoPluckedPianoSource.getMelody(), 0);
-        Instrument.play(TwoMutedPianoMelodySource.getMelody(), 1);
-        Instrument.play(TwoMalletPianoSource.getMelody(), 5);
+        Instrument.play(GardenPluckedPianoSource.getMelody(), 0);
+        Instrument.play(GardenMutedPianoMelodySource.getMelody(), 1);
+        Instrument.play(GardenMalletPianoSource.getMelody(), 5);
 
-        Instrument.play(TwoGlassArmonicaMelodySource.getMelody(), 2);
-        Instrument.play(TwoGlockenMelodySource.getMelody(), 3);
-        Instrument.play(TwoHarmoniumMelodySource.getMelody(), 4);
+        Instrument.play(GardenGlassArmonicaMelodySource.getMelody(), 2);
+        Instrument.play(GardenGlockenMelodySource.getMelody(), 3);
+        Instrument.play(GardenHarmoniumMelodySource.getMelody(), 4);
     }
 }
