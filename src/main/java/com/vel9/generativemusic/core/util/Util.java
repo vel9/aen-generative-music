@@ -14,4 +14,5 @@ public class Util {
     public static int getSeconds(int numSeconds){
         return Constants.SECOND_IN_MILLIS * numSeconds;
     }
+
 }

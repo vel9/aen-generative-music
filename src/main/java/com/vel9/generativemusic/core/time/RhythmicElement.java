@@ -1,7 +1,5 @@
 package com.vel9.generativemusic.core.time;
 
-import com.vel9.generativemusic.core.util.Log;
-
 import java.util.Arrays;
 
 import static com.vel9.generativemusic.core.support.Constants.MINUTE_IN_MILLIS;
@@ -36,7 +34,7 @@ public class RhythmicElement {
     private RhythmicElementType[] rhythmicElementTypes;
 
     /**
-     * If more than one RhythmicElementType is provided, a "tie-ing" effect will be achieved.
+     * If more than nocturne RhythmicElementType is provided, a "tie-ing" effect will be achieved.
      *
      * For example, if a QUARTER and EIGHTH are provided, the RhythmicElement will represent
      * a dotted quarter (quarter + eighth).
@@ -64,7 +62,6 @@ public class RhythmicElement {
 
     /* helper method for determining value of RhythmicElementType given wholeNoteValInMillis value */
     private int getDuration(final RhythmicElementType rhythmicElementType, final int wholeNoteValInMillis){
-        Log.config(TAG, wholeNoteValInMillis);
         final int halfNoteTriplet = wholeNoteValInMillis/3;
         switch(rhythmicElementType){
             case WHOLE:

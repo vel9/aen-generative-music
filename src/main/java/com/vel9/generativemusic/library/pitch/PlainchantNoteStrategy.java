@@ -38,9 +38,9 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         this.intervalSequences = getIntervalSequences();
     }
 
-    /* sets the default "first note already played" as the one in the middle of the available notes */
+    /* sets the default "first note already played" as the nocturne in the middle of the available notes */
     private int getDefaultPrevNoteIndex(ScaleStrategy scaleStrategy) {
-        List<Note> allNotes = scaleStrategy.getScale().getAllNotes();
+        List<Note> allNotes = scaleStrategy.getScale().getNotes();
         Log.config(TAG, allNotes);
         // select middle time as the anchor,
         return allNotes.size()/2;
@@ -54,7 +54,7 @@ public class PlainchantNoteStrategy implements NoteStrategy {
 
     @Override
     public Note nextNote() {
-        List<Note> allNotes = this.scaleStrategy.getScale().getAllNotes();
+        List<Note> allNotes = this.scaleStrategy.getScale().getNotes();
         int[] sequence = this.intervalSequences.get(this.sequenceIndex).getIntervalSequence();
         int nextNoteIndex = getNextNoteIndex(allNotes, sequence[this.sequenceElementIndex]);
 
@@ -139,7 +139,7 @@ public class PlainchantNoteStrategy implements NoteStrategy {
 
     /**
      * It is possible for the algorithm to get in a corner when
-     * there is, for example, only one note available in the up direction,
+     * there is, for example, only nocturne note available in the up direction,
      * and that note has already been played during current sequence.
      *
      * Similar situation is possible in the down direction.

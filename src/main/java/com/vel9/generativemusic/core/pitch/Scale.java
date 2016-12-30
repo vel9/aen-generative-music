@@ -15,10 +15,31 @@ public class Scale {
 
     private final NoteType[] baseNotes;
     private final List<Note> allNotes;
+    private final ScaleType scaleType;
 
+    public static Scale createTransposingScale(BaseScale baseScale, NoteType startingNote, int minNote, int maxNote){
+        return new Scale(baseScale, startingNote, minNote, maxNote);
+    }
+
+    public static Scale createNonTransposingScale(int... noteVals){
+        if (noteVals == null || noteVals.length == 0){
+            throw new IllegalArgumentException("Need at least one note");
+        }
+        return new Scale(noteVals);
+    }
+
+    //TODO: hide visibility
     public Scale(BaseScale baseScale, NoteType startingNote, int minNote, int maxNote){
+        this.scaleType = ScaleType.TRANSPOSING;
         this.baseNotes = baseScale.getBaseNotes();
         this.allNotes = buildAllNotes(baseNotes, startingNote, minNote, maxNote);
+    }
+
+    //TODO: hide visibility
+    public Scale(int... noteVals){
+        this.scaleType = ScaleType.NONTRANSPOSING;
+        this.baseNotes = null;
+        this.allNotes = buildFixedNotes(noteVals);
     }
 
     /* builds a list of all notes in this scale */
@@ -41,17 +62,35 @@ public class Scale {
         return allNotes;
     }
 
-    public int scaleSize(){
-        return baseNotes.length;
+    private List<Note> buildFixedNotes(int... noteVals){
+        List<Note> fixedNotes = new ArrayList<>();
+        for (int noteVal : noteVals){
+            fixedNotes.add(new Note(noteVal));
+        }
+        return fixedNotes;
     }
 
-    public List<Note> getAllNotes(){
+    public int scaleSize(){
+        if (this.scaleType == ScaleType.NONTRANSPOSING){
+            return allNotes.size();
+        } else if (this.scaleType == ScaleType.TRANSPOSING){
+            return baseNotes.length;
+        } else {
+            throw new IllegalStateException("Provided scale type has not been implemented");
+        }
+    }
+
+    public ScaleType getScaleType(){
+        return this.scaleType;
+    }
+
+    public List<Note> getNotes(){
         return allNotes;
     }
 
     public static void main(String[] args) {
         Scale scale = new Scale(BaseScale.MAJOR, NoteType.A, 0, 127);
-        System.out.println(scale.getAllNotes());
+        System.out.println(scale.getNotes());
     }
 
     @Override

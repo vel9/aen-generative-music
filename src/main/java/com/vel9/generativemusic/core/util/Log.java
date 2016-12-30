@@ -18,10 +18,6 @@ public class Log {
         applogger.setLevel(Level.ALL);
     }
 
-    public static void log(Level level, String tag, String message){
-        applogger.log(level, tag + "; " + message);
-    }
-
     public static void config(String tag, Object value){
         applogger.log(Level.CONFIG, tag + "; " + value);
     }
