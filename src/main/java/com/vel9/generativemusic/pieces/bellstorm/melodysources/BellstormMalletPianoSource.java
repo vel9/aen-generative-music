@@ -21,11 +21,11 @@ import java.util.List;
 public class BellstormMalletPianoSource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(24, 60), Util.getSeconds(6));
+        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(24, 60), Util.getSeconds(6));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getDownwardTempoStrategy(180, 240, Util.getSeconds(3));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getUpwardDynamicsStrategy(2, 80, Util.getSeconds(1));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(2, 80, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }

@@ -22,11 +22,11 @@ import java.util.List;
 public class GardenMutedPianoMelodySource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(36, 96), Util.getSeconds(5));
+        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(36, 96), Util.getSeconds(5));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getDownwardTempoStrategy(70, 200, Util.getSeconds(10));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getUpwardDynamicsStrategy(3, 50, Util.getSeconds(1));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(3, 50, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }

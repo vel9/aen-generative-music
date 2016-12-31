@@ -21,11 +21,11 @@ import java.util.List;
 public class BellstormArmonicaRightMelodySource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(28, 50), Util.getSeconds(6));
+        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(28, 50), Util.getSeconds(6));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(180, 240, Util.getSeconds(10));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getUpwardDynamicsStrategy(1, 45, Util.getSeconds(1));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(1, 45, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }

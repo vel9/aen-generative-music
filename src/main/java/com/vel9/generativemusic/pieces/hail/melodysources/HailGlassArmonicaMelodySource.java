@@ -22,11 +22,11 @@ import java.util.List;
 public class HailGlassArmonicaMelodySource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(69, 89), Util.getSeconds(5));
+        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(69, 89), Util.getSeconds(5));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getDownwardTempoStrategy(130, 200, Util.getSeconds(10));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getUpwardDynamicsStrategy(1, 15, Util.getSeconds(1));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(1, 15, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }

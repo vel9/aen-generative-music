@@ -22,11 +22,11 @@ import java.util.List;
 public class GardenGlockenMelodySource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getScaleStrategy(getScales(64, 102), Util.getSeconds(6));
+        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(64, 102), Util.getSeconds(6));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getDownwardTempoStrategy(70, 200, Util.getSeconds(3));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getDownwardDynamicsStrategy(2, 35, Util.getSeconds(4));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualDownwardDynamicsStrategy(2, 35, Util.getSeconds(4));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }
