@@ -10,7 +10,7 @@ import com.vel9.generativemusic.core.util.Util;
 
 import java.util.List;
 
-//* Impl of RhythmStrategy which randomly selects from a list of provided rhythmic sequences */
+/* Impl of RhythmStrategy which randomly selects from a list of provided rhythmic sequences */
 public class RandomRhythmStrategy implements RhythmStrategy {
 
     private static final String TAG = RandomRhythmStrategy.class.getSimpleName();

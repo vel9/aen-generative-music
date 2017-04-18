@@ -13,6 +13,8 @@ import javax.sound.midi.ShortMessage;
  */
 public class Performer {
 
+    private static final int NOTE_OFF_VELOCITY_VALUE = 60;
+
     private int channel;
     private Receiver receiver;
     private Note prevNote;
@@ -57,7 +59,7 @@ public class Performer {
         if (this.prevNote == null){
             return;
         }
-        noteOff(this.prevNote.getValue(), 60);
+        noteOff(this.prevNote.getValue(), NOTE_OFF_VELOCITY_VALUE);
     }
 
     private Note copyNote(Note original){

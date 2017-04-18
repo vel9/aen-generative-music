@@ -14,6 +14,7 @@ import com.vel9.generativemusic.library.pitch.ChangeScaleStrategy;
 import com.vel9.generativemusic.library.pitch.PlainchantNoteStrategy;
 import com.vel9.generativemusic.library.pitch.RandomNoteStrategy;
 import com.vel9.generativemusic.library.pitch.SameScaleStrategy;
+import com.vel9.generativemusic.library.time.FixedRhythmStrategy;
 import com.vel9.generativemusic.library.time.GradualTempoStrategy;
 import com.vel9.generativemusic.library.time.RandomRhythmStrategy;
 
@@ -64,5 +65,11 @@ public class StrategyFactory {
                                                    DynamicsStrategy dynamicsStrategy,
                                                    List<RhythmicSequence> rhythmicSequences){
         return new RandomRhythmStrategy(tempoStrategy, dynamicsStrategy, rhythmicSequences);
+    }
+
+    public static RhythmStrategy getFixedRhythmStrategy(TempoStrategy tempoStrategy,
+                                                   DynamicsStrategy dynamicsStrategy,
+                                                   List<RhythmicSequence> rhythmicSequences){
+        return new FixedRhythmStrategy(tempoStrategy, dynamicsStrategy, rhythmicSequences);
     }
 }

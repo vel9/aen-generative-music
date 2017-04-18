@@ -24,7 +24,7 @@ public class NocturneGuitarMelodySource {
         ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(36, 72), Util.getSeconds(5));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
-        TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(20, 70, Util.getSeconds(7));
+        TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(10, 45, Util.getSeconds(7));
         DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(10, 70, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);

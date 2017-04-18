@@ -26,8 +26,5 @@ public class BellstormMain {
         Instrument.play(BellstormMutedPianoMelodySource.getMelody(), 2);
         Instrument.play(BellstormArmonicaRightMelodySource.getMelody(), 3);
 
-        //Instrument.play(FourGlockenMelodySource.getMelody(), 3);
-        //Instrument.play(FourBowedPianoMelodySource.getMelody(), 4);
-        //Instrument.play(FourCopenhagenMelodySource.getMelody(), 6);
     }
 }
