@@ -88,13 +88,13 @@ public class Scale {
         return allNotes;
     }
 
-    public static void main(String[] args) {
-        Scale scale = new Scale(BaseScale.MAJOR, NoteType.A, 0, 127);
-        System.out.println(scale.getNotes());
-    }
-
     @Override
     public String toString(){
         return Arrays.toString(this.baseNotes);
+    }
+
+    public static void main(String[] args) {
+        Scale scale = new Scale(BaseScale.MAJOR, NoteType.A, 0, 127);
+        System.out.println(scale.getNotes());
     }
 }
