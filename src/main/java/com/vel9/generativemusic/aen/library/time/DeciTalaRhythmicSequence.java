@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 /**
  * Provides a number of RhythmicSequence representations of the amazing hindu deci talas
+ *
+ * Messiaen: Treatise on Rhythm, Color and Ornithology, Tome I, page 271
  */
 public enum DeciTalaRhythmicSequence implements RhythmicSequence {
 
