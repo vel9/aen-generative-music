@@ -1,9 +1,8 @@
 package com.vel9.generativemusic.aen.pieces.rain;
 
 import com.vel9.generativemusic.aen.core.perform.Instrument;
-import com.vel9.generativemusic.aen.pieces.rain.melodysources.RainMarimbaMelodySource;
-import com.vel9.generativemusic.aen.pieces.rain.melodysources.RainBowedMarimbaMelodySource;
 import com.vel9.generativemusic.aen.pieces.rain.melodysources.RainHangDrumMKOneMelodySource;
+import com.vel9.generativemusic.aen.pieces.rain.melodysources.RainMarimbaMelodySource;
 
 /**
  *
@@ -25,12 +24,9 @@ import com.vel9.generativemusic.aen.pieces.rain.melodysources.RainHangDrumMKOneM
 public class RainMain {
 
     public static void main(String[] args) {
-        // main droplets
         Instrument.play(RainMarimbaMelodySource.getMelody(), 0);
         Instrument.play(RainMarimbaMelodySource.getMelody(), 1);
-        // bowed
-        Instrument.play(RainBowedMarimbaMelodySource.getMelody(), 2);
-        // fixed droplets left
+        Instrument.play(RainMarimbaMelodySource.getMelody(), 2);
         Instrument.play(RainHangDrumMKOneMelodySource.getMelody(), 3);
     }
 }

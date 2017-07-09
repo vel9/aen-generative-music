@@ -25,7 +25,7 @@ public class RainBowedMarimbaMelodySource {
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(7, 35, Util.getSeconds(2));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(10, 70, Util.getSeconds(3));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(2, 20, Util.getSeconds(3));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }
