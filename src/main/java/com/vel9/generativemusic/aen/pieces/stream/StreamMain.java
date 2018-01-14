@@ -1,7 +1,7 @@
-package com.vel9.generativemusic.aen.pieces.carillon;
+package com.vel9.generativemusic.aen.pieces.stream;
 
 import com.vel9.generativemusic.aen.core.perform.Instrument;
-import com.vel9.generativemusic.aen.pieces.carillon.melodysource.*;
+import com.vel9.generativemusic.aen.pieces.stream.melodysource.*;
 
 /**
  *
@@ -18,22 +18,22 @@ import com.vel9.generativemusic.aen.pieces.carillon.melodysource.*;
  7	108	109	110	111	112	113	114	115	116	117	118	119
  8	120	121	122	123	124	125	126	127
  */
-public class GoldenMain {
+public class StreamMain {
 
     public static void main(String[] args) {
         // MAIN: semeranda 2
-        Instrument.play(GoldenThematicChordGradualMelodySource.getMelody(56), 0);
+        Instrument.play(StreamThematicChordGradualMelodySource.getMelody(56), 0);
         // gamelan
-        Instrument.play(GoldenBatelMelodySource.getMelody(), 5);
-        Instrument.play(GoldenBatelMelodySource.getMelody(), 5);
+        Instrument.play(StreamBatelMelodySource.getMelody(), 5);
+        Instrument.play(StreamBatelMelodySource.getMelody(), 5);
         // semaradana
-        Instrument.play(GoldenSemeradanaMelodySource.getMelody(), 1);
-        Instrument.play(GoldenSemeradanaMelodySource.getMelody(), 1);
+        Instrument.play(StreamSemeradanaMelodySource.getMelody(), 1);
+        Instrument.play(StreamSemeradanaMelodySource.getMelody(), 1);
         // hang drum A
-        Instrument.play(GoldenThematicChordGradualMelodySource.getMelody(62), 2);
+        Instrument.play(StreamThematicChordGradualMelodySource.getMelody(62), 2);
         // hang drum B
-        Instrument.play(GoldenThematicChordGradualMelodySource.getMelody(60), 3);
+        Instrument.play(StreamThematicChordGradualMelodySource.getMelody(60), 3);
         // apollo
-        Instrument.play(GoldenDroneMelodySource.getMelody(), 6);
+        Instrument.play(StreamDroneMelodySource.getMelody(), 6);
     }
 }

@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.aen.pieces.carillon.melodysource;
+package com.vel9.generativemusic.aen.pieces.stream.melodysource;
 
 import com.vel9.generativemusic.aen.core.MelodySource;
 import com.vel9.generativemusic.aen.core.dynamics.DynamicsStrategy;
@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GoldenSemeradanaMelodySource {
+public class StreamSemeradanaMelodySource {
 
     public static MelodySource getMelody(){
         ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(48, 100), Util.getSeconds(10));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
         TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(70, 160, Util.getSeconds(10));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(20, 80, Util.getSeconds(1));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(1, 80, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }

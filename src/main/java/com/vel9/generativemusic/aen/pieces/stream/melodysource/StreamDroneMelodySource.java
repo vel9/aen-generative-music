@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.aen.pieces.carillon.melodysource;
+package com.vel9.generativemusic.aen.pieces.stream.melodysource;
 
 import com.vel9.generativemusic.aen.core.MelodySource;
 import com.vel9.generativemusic.aen.core.dynamics.DynamicsStrategy;
@@ -15,38 +15,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GoldenBatelMelodySource {
+public class StreamDroneMelodySource {
 
     public static MelodySource getMelody(){
-        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(48, 91), Util.getSeconds(10));
+        ScaleStrategy scaleStrategy = StrategyFactory.getChangeScaleStrategy(getScales(36, 84), Util.getSeconds(20));
         NoteStrategy noteStrategy = StrategyFactory.getNoteStrategy(scaleStrategy);
 
-        TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(100, 260, Util.getSeconds(10));
-        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(10, 60, Util.getSeconds(1));
+        TempoStrategy tempoStrategy = StrategyFactory.getUpwardTempoStrategy(40, 60, Util.getSeconds(9));
+        DynamicsStrategy dynamicsStrategy = StrategyFactory.getGradualUpwardDynamicsStrategy(30, 70, Util.getSeconds(1));
         RhythmStrategy rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, getRhythmicSequences());
         return new SimpleMelodySource(noteStrategy, rhythmStrategy);
     }
 
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{
-                new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.F_SHARP, minNote, maxNote),
+                new Scale(BaseScale.MAJOR, NoteType.C, minNote, maxNote),
+                new Scale(BaseScale.MINOR, NoteType.C_SHARP, minNote, maxNote),
+                new Scale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
+                new Scale(BaseScale.MAJOR, NoteType.D_SHARP, minNote, maxNote),
+                new Scale(BaseScale.MODE3, NoteType.E, minNote, maxNote),
+                new Scale(BaseScale.MODE3, NoteType.F, minNote, maxNote),
+                new Scale(BaseScale.MODE3, NoteType.F_SHARP, minNote, maxNote),
                 new Scale(BaseScale.MODE6, NoteType.G, minNote, maxNote),
                 new Scale(BaseScale.MODE6, NoteType.G_SHARP, minNote, maxNote),
                 new Scale(BaseScale.MODE6, NoteType.A, minNote, maxNote),
+                new Scale(BaseScale.MODE6, NoteType.A_SHARP, minNote, maxNote),
+                new Scale(BaseScale.MODE6, NoteType.B, minNote, maxNote),
         };
     }
 
     private static List<RhythmicSequence> getRhythmicSequences(){
         List<RhythmicSequence> rhythmicSequences = new ArrayList<>();
-        rhythmicSequences.addAll(Arrays.asList(DeciTalaRhythmicSequence.getFastSequences()));
+        rhythmicSequences.addAll(Arrays.asList(DeciTalaRhythmicSequence.values()));
         return rhythmicSequences;
     }
-
 }

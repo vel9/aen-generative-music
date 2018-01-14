@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.aen.pieces.carillon.melodysource;
+package com.vel9.generativemusic.aen.pieces.stream.melodysource;
 
 import com.vel9.generativemusic.aen.core.MelodySource;
 import com.vel9.generativemusic.aen.core.dynamics.DynamicsStrategy;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GoldenThematicChordRandomMelodySource {
+public class StreamThematicChordRandomMelodySource {
 
     // EbM 63 -> 67 -> 70 | CM 72 -> 76 - 79
     // DM 61 -> 65 -> 68 | BM 70 -> 74 - 78
