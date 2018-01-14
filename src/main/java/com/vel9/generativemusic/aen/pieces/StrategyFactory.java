@@ -1,21 +1,22 @@
 package com.vel9.generativemusic.aen.pieces;
 
 import com.vel9.generativemusic.aen.core.dynamics.DynamicsStrategy;
+import com.vel9.generativemusic.aen.core.pitch.NoteStrategy;
 import com.vel9.generativemusic.aen.core.pitch.Scale;
 import com.vel9.generativemusic.aen.core.pitch.ScaleStrategy;
 import com.vel9.generativemusic.aen.core.support.Direction;
-import com.vel9.generativemusic.aen.library.dynamics.RandomDynamicsStrategy;
-import com.vel9.generativemusic.aen.library.pitch.ChangeScaleStrategy;
-import com.vel9.generativemusic.aen.library.pitch.RandomNoteStrategy;
-import com.vel9.generativemusic.aen.library.pitch.SameScaleStrategy;
-import com.vel9.generativemusic.aen.library.time.GradualTempoStrategy;
-import com.vel9.generativemusic.aen.core.pitch.NoteStrategy;
 import com.vel9.generativemusic.aen.core.time.RhythmStrategy;
 import com.vel9.generativemusic.aen.core.time.RhythmicSequence;
 import com.vel9.generativemusic.aen.core.time.TempoStrategy;
 import com.vel9.generativemusic.aen.library.dynamics.GradualDynamicsStrategy;
+import com.vel9.generativemusic.aen.library.dynamics.RandomDynamicsStrategy;
+import com.vel9.generativemusic.aen.library.dynamics.VariablePeakDynamicsStrategy;
+import com.vel9.generativemusic.aen.library.pitch.ChangeScaleStrategy;
 import com.vel9.generativemusic.aen.library.pitch.PlainchantNoteStrategy;
+import com.vel9.generativemusic.aen.library.pitch.RandomNoteStrategy;
+import com.vel9.generativemusic.aen.library.pitch.SameScaleStrategy;
 import com.vel9.generativemusic.aen.library.time.FixedRhythmStrategy;
+import com.vel9.generativemusic.aen.library.time.GradualTempoStrategy;
 import com.vel9.generativemusic.aen.library.time.RandomRhythmStrategy;
 
 import java.util.List;
@@ -51,6 +52,18 @@ public class StrategyFactory {
 
     public static DynamicsStrategy getRandomDynamicsStrategy(int minVelocity, int maxVelocity, int rateOfChange){
         return new RandomDynamicsStrategy(minVelocity, maxVelocity, rateOfChange);
+    }
+
+    public static DynamicsStrategy getVariablePeakDynamicsStrategy(int minVelocityLower,
+                                                                   int minVelocityUpper,
+                                                                   int maxVelocityLower,
+                                                                   int maxVelocityUpper,
+                                                                   int rateInMillis){
+        return new VariablePeakDynamicsStrategy(minVelocityLower,
+                                                minVelocityUpper,
+                                                maxVelocityLower,
+                                                maxVelocityUpper,
+                                                rateInMillis);
     }
 
     public static TempoStrategy getUpwardTempoStrategy(int minTempo, int maxTempo, int rateOfChange) {
