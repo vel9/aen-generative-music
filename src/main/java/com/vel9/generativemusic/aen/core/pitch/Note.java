@@ -29,6 +29,11 @@ public class Note {
         return new Note(noteType, octave);
     }
 
+    public static Note create(int value){
+        validate(value);
+        return new Note(value);
+    }
+
     public Note(int value){
         this.value = value;
     }
@@ -39,10 +44,14 @@ public class Note {
 
     private int calculateNoteValue(int baseNoteValue, int octave){
         int value = baseNoteValue + (12 * octave);
+        validate(value);
+        return value;
+    }
+
+    private static void validate(int value) {
         if (value < 0 || value > 127){
             throw new IllegalArgumentException("Note value can only be between 0 and 127, inclusive");
         }
-        return value;
     }
 
     public int getValue(){

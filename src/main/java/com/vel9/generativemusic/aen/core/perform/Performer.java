@@ -5,6 +5,8 @@ import com.vel9.generativemusic.aen.core.support.Constants;
 
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
+import java.util.Timer;
+import java.util.TimerTask;
 
 // ref: https://java.net/projects/gervill/sources/Mercurial/content/src/com/sun/media/sound/SoftChannel.java?rev=289
 
@@ -31,6 +33,16 @@ public class Performer {
             noteOn(note.getValue(), velocity);
             this.prevNote = copyNote(note);
         }
+    }
+
+    public void playOneShotNote(Note note, int velocity, long millisToHoldNote){
+        noteOn(note.getValue(), velocity);
+        scheduleNoteOff(note.getValue(), millisToHoldNote);
+    }
+
+    private void scheduleNoteOff(int noteToShutOff, long millisToHoldNote){
+        Timer timer = new Timer();
+        timer.schedule(new NoteOffTask(noteToShutOff), millisToHoldNote);
     }
 
     /* starts playing provided note at provided velocity */
@@ -65,4 +77,18 @@ public class Performer {
     private Note copyNote(Note original){
         return new Note(original.getValue());
     }
+
+    private class NoteOffTask extends TimerTask {
+        private int noteToShutOff;
+
+        NoteOffTask(int noteToShutOff){
+            this.noteToShutOff = noteToShutOff;
+        }
+
+        @Override
+        public void run(){
+            noteOff(noteToShutOff, 0);
+        }
+    }
+
 }

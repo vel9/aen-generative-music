@@ -60,7 +60,12 @@ public class RhythmicElement {
         return duration;
     }
 
-    /* helper method for determining value of RhythmicElementType given wholeNoteValInMillis value */
+    /**
+     * Helper method for determining value of RhythmicElementType given wholeNoteValInMillis value
+     *
+     * Note that the implementation always rounds down due to integer division
+     *
+     */
     private int getDuration(final RhythmicElementType rhythmicElementType, final int wholeNoteValInMillis){
         final int halfNoteTriplet = wholeNoteValInMillis/3;
         switch(rhythmicElementType){
@@ -99,7 +104,4 @@ public class RhythmicElement {
         return Arrays.toString((this.rhythmicElementTypes));
     }
 
-    public static void main(String[] args) {
-        RhythmicElement element = new RhythmicElement(RhythmicElementType.EIGHTH);
-    }
 }

@@ -28,14 +28,14 @@ public class Scale {
         return new Scale(noteVals);
     }
 
-    //TODO: hide visibility
+    //TODO: reduce visibility
     public Scale(BaseScale baseScale, NoteType startingNote, int minNote, int maxNote){
         this.scaleType = ScaleType.TRANSPOSING;
         this.baseNotes = baseScale.getBaseNotes();
         this.allNotes = buildAllNotes(baseNotes, startingNote, minNote, maxNote);
     }
 
-    //TODO: hide visibility
+    //TODO: reduce visibility
     public Scale(int... noteVals){
         this.scaleType = ScaleType.NONTRANSPOSING;
         this.baseNotes = null;
@@ -93,8 +93,4 @@ public class Scale {
         return Arrays.toString(this.baseNotes);
     }
 
-    public static void main(String[] args) {
-        Scale scale = new Scale(BaseScale.MAJOR, NoteType.A, 0, 127);
-        System.out.println(scale.getNotes());
-    }
 }
