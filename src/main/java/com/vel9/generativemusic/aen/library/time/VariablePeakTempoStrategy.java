@@ -4,8 +4,10 @@ import com.vel9.generativemusic.aen.core.support.DaemonCallback;
 import com.vel9.generativemusic.aen.core.support.Direction;
 import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.aen.core.time.TempoStrategy;
-import com.vel9.generativemusic.aen.core.util.Log;
 import com.vel9.generativemusic.aen.core.util.Util;
+import com.vel9.generativemusic.aen.library.pitch.PlainchantNoteStrategy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Impl of TempoStrategy which gradually moves from a min to a max temp
@@ -13,7 +15,7 @@ import com.vel9.generativemusic.aen.core.util.Util;
  */
 public class VariablePeakTempoStrategy implements TempoStrategy, DaemonCallback {
 
-    private static final String TAG = VariablePeakTempoStrategy.class.getSimpleName();
+    private static final Logger LOG = LoggerFactory.getLogger(PlainchantNoteStrategy.class);
 
     private int minBpmLower;
     private int minBpmUpper;
@@ -65,13 +67,13 @@ public class VariablePeakTempoStrategy implements TempoStrategy, DaemonCallback 
         if (this.bpm == this.maxBpm){
             this.direction = Direction.DOWN;
             this.minBpm = getNewMinBpm();
-            Log.config(TAG, "at the peak, new minBpm: " + this.minBpm);
+            LOG.debug("at the peak, new minBpm: " + this.minBpm);
         }
         // when valley is reached, set a new peak
         if (this.bpm == this.minBpm){
             this.direction = Direction.UP;
             this.maxBpm = getNewMaxBpm();
-            Log.config(TAG, "at the valley, new maxBpm: " + this.maxBpm);
+            LOG.debug("at the valley, new maxBpm: " + this.maxBpm);
         }
 
         if (this.direction == Direction.UP){
@@ -80,7 +82,7 @@ public class VariablePeakTempoStrategy implements TempoStrategy, DaemonCallback 
             this.bpm--;
         }
 
-        Log.config(TAG, "current bpm: " + this.bpm);
+        LOG.debug("current bpm: " + this.bpm);
     }
 
     private int getNewMaxBpm() {

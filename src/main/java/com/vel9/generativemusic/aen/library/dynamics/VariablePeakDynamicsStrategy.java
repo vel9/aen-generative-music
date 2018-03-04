@@ -5,8 +5,9 @@ import com.vel9.generativemusic.aen.core.support.DaemonCallback;
 import com.vel9.generativemusic.aen.core.support.Direction;
 import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.aen.core.time.RhythmicSequence;
-import com.vel9.generativemusic.aen.core.util.Log;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Impl of DynamicsStrategy which gradually moves from provided min to max, max to min values
@@ -16,7 +17,7 @@ import com.vel9.generativemusic.aen.core.util.Util;
  */
 public class VariablePeakDynamicsStrategy implements DynamicsStrategy, DaemonCallback {
 
-    private static final String TAG = VariablePeakDynamicsStrategy.class.getSimpleName();
+    private static final Logger LOG = LoggerFactory.getLogger(VariablePeakDynamicsStrategy.class);
 
     private static final int ACCENT = 5;
 
@@ -71,13 +72,13 @@ public class VariablePeakDynamicsStrategy implements DynamicsStrategy, DaemonCal
         if (this.velocity == this.maxVelocity){
             this.direction = Direction.DOWN;
             this.minVelocity = getNewMinVelocity();
-            Log.config(TAG, "at the peak, new minVelocity: " + this.minVelocity);
+            LOG.debug("at the peak, new minVelocity: " + this.minVelocity);
         }
         // when valley is reached, set a new peak
         if (this.velocity == this.minVelocity){
             this.direction = Direction.UP;
             this.maxVelocity = getNewMaxVelocity();
-            Log.config(TAG, "at the valley, new maxVelocity: " + this.maxVelocity);
+            LOG.debug("at the valley, new maxVelocity: " + this.maxVelocity);
         }
 
         if (this.direction == Direction.UP){
@@ -86,7 +87,7 @@ public class VariablePeakDynamicsStrategy implements DynamicsStrategy, DaemonCal
             this.velocity--;
         }
 
-        Log.config(TAG, "current velocity: " + this.velocity);
+        LOG.debug("current velocity: " + this.velocity);
     }
 
     private int getNewMaxVelocity() {

@@ -1,6 +1,7 @@
 package com.vel9.generativemusic.aen.core.perform;
 
-import com.vel9.generativemusic.aen.core.util.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiSystem;
@@ -16,7 +17,7 @@ import javax.sound.midi.Receiver;
 public class PerformanceSupport {
 
     private static Receiver receiver;
-    private static final String TAG = PerformanceSupport.class.getSimpleName();
+    private static final Logger LOG = LoggerFactory.getLogger(PerformanceSupport.class);
 
     /* initializes the MIDI Receiver */
     static{
@@ -24,7 +25,7 @@ public class PerformanceSupport {
     }
 
     private static void initMidiReceiver() {
-        Log.config(TAG, "Available MidiDevices on System: " + printMidiDevices());
+        LOG.info("Available MidiDevices on System: " + printMidiDevices());
         try {
             receiver = MidiSystem.getReceiver();
         } catch (Exception e){

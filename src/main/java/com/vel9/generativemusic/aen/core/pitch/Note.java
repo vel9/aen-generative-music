@@ -17,11 +17,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 package com.vel9.generativemusic.aen.core.pitch;
 
-import com.vel9.generativemusic.aen.core.util.Log;
-
 public class Note {
-
-    private static final String TAG = Note.class.getSimpleName();
 
     private int value;
 
@@ -83,11 +79,6 @@ public class Note {
     @Override
     public String toString(){
         return "[Note value: " + String.valueOf(this.value) + ", " + getNoteLiteralValue() + "]";
-    }
-
-    public static void main(String[] args) {
-        Note note = new Note(60);
-        Log.config(TAG, note);
     }
 
 }

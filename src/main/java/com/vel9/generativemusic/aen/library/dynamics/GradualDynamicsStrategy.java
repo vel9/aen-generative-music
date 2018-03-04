@@ -5,7 +5,8 @@ import com.vel9.generativemusic.aen.core.support.DaemonCallback;
 import com.vel9.generativemusic.aen.core.support.Direction;
 import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.aen.core.time.RhythmicSequence;
-import com.vel9.generativemusic.aen.core.util.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Impl of DynamicsStrategy which gradually moves from provided min to max, max to min values
@@ -13,7 +14,7 @@ import com.vel9.generativemusic.aen.core.util.Log;
  */
 public class GradualDynamicsStrategy implements DynamicsStrategy, DaemonCallback {
 
-    private static final String TAG = GradualDynamicsStrategy.class.getSimpleName();
+    private static final Logger LOG = LoggerFactory.getLogger(GradualDynamicsStrategy.class);
 
     private static final int ACCENT = 5;
 
@@ -59,6 +60,6 @@ public class GradualDynamicsStrategy implements DynamicsStrategy, DaemonCallback
             this.velocity--;
         }
 
-        Log.config(TAG, "current velocity: " + this.velocity);
+        LOG.debug("current velocity: " + this.velocity);
     }
 }

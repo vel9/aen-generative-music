@@ -4,13 +4,14 @@ import com.vel9.generativemusic.aen.core.dynamics.DynamicsStrategy;
 import com.vel9.generativemusic.aen.core.support.DaemonCallback;
 import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.aen.core.time.RhythmicSequence;
-import com.vel9.generativemusic.aen.core.util.Log;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /* Picks a new random velocity at the provided rate */
 public class RandomDynamicsStrategy implements DynamicsStrategy, DaemonCallback {
 
-    private static final String TAG = RandomDynamicsStrategy.class.getSimpleName();
+    private static final Logger LOG = LoggerFactory.getLogger(RandomDynamicsStrategy.class);
 
     /* note: this impl provides a strong accent on the start of a sequence */
     private static final int ACCENT = 10; //TODO: could return accent value from a method
@@ -21,7 +22,6 @@ public class RandomDynamicsStrategy implements DynamicsStrategy, DaemonCallback 
     private int velocity;
 
     public RandomDynamicsStrategy(int minVelocity, int maxVelocity, int rateInMillis){
-        //TODO: need to figure out validation structure overall
         int maxPossibleVelicty = maxVelocity + ACCENT;
         if (minVelocity < 0 || maxPossibleVelicty > 127){
             throw new IllegalArgumentException("minVelocity must be 0 or greater, minVelocity: " + minVelocity
@@ -50,6 +50,6 @@ public class RandomDynamicsStrategy implements DynamicsStrategy, DaemonCallback 
     @Override
     public void call(){
         this.velocity = Util.getRandom(this.minVelocity, this.maxVelocity);
-        Log.config(TAG, "current velocity: " + this.velocity);
+        LOG.debug("current velocity: " + this.velocity);
     }
 }

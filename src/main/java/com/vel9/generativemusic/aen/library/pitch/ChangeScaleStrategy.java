@@ -4,13 +4,14 @@ import com.vel9.generativemusic.aen.core.pitch.Scale;
 import com.vel9.generativemusic.aen.core.pitch.ScaleStrategy;
 import com.vel9.generativemusic.aen.core.support.DaemonCallback;
 import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
-import com.vel9.generativemusic.aen.core.util.Log;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /* Impl of ScaleStragey which randomly selects form the provided scales at the provided rate */
 public class ChangeScaleStrategy implements ScaleStrategy, DaemonCallback {
 
-    private static final String TAG = ChangeScaleStrategy.class.getSimpleName();
+    private static final Logger LOG = LoggerFactory.getLogger(ChangeScaleStrategy.class);
 
     private Scale scale;
     private Scale[] scales;
@@ -34,6 +35,6 @@ public class ChangeScaleStrategy implements ScaleStrategy, DaemonCallback {
 
     public void call(){
         this.scale = this.scales[Util.getRandom(0, this.scales.length - 1)];
-        Log.config(TAG, "current scale: " + this.scale);
+        LOG.debug("current scale: " + this.scale);
     }
 }

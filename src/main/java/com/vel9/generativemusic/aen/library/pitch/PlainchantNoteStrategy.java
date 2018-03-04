@@ -5,7 +5,8 @@ import com.vel9.generativemusic.aen.core.pitch.Note;
 import com.vel9.generativemusic.aen.core.pitch.NoteStrategy;
 import com.vel9.generativemusic.aen.core.pitch.ScaleStrategy;
 import com.vel9.generativemusic.aen.core.util.Util;
-import com.vel9.generativemusic.aen.core.util.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,6 @@ import java.util.List;
  * as a basis for deciding which note to provide next.
  */
 public class PlainchantNoteStrategy implements NoteStrategy {
-
-    private static final String TAG = PlainchantNoteStrategy.class.getSimpleName();
 
     private ScaleStrategy scaleStrategy;
     private List<IntervalSequence> intervalSequences;
@@ -39,7 +38,6 @@ public class PlainchantNoteStrategy implements NoteStrategy {
     /* sets the default "first note already played" as the nocturne in the middle of the available notes */
     private int getDefaultPrevNoteIndex(ScaleStrategy scaleStrategy) {
         List<Note> allNotes = scaleStrategy.getScale().getNotes();
-        Log.config(TAG, allNotes);
         // select middle time as the anchor,
         return allNotes.size()/2;
     }
