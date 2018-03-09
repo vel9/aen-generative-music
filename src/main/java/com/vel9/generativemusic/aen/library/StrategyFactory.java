@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.aen.examples.pieces;
+package com.vel9.generativemusic.aen.library;
 
 import com.vel9.generativemusic.aen.core.dynamics.DynamicsStrategy;
 import com.vel9.generativemusic.aen.core.pitch.NoteStrategy;
@@ -22,9 +22,6 @@ import com.vel9.generativemusic.aen.library.time.VariablePeakTempoStrategy;
 
 import java.util.List;
 
-/**
- * Created by levani on 12/12/16.
- */
 public class StrategyFactory {
 
     public static ScaleStrategy getChangeScaleStrategy(Scale[] scales, int scaleRateOfChange) {
