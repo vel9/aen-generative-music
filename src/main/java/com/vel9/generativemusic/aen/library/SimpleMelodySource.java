@@ -28,10 +28,10 @@ public class SimpleMelodySource implements MelodySource {
     public NoteContainer next(){
         DurationVelocity durationVelocity = this.rhythmStrategy.next();
         if (durationVelocity.isSilence()){
-            return new NoteContainer(new Note(Constants.SILENT_NOTE), this.rhythmStrategy.next());
+            return new NoteContainer(new Note(Constants.SILENT_NOTE), durationVelocity);
         } else {
             // only grab next note if duration is not a silence..
-            return new NoteContainer(this.noteStrategy.nextNote(), this.rhythmStrategy.next());
+            return new NoteContainer(this.noteStrategy.nextNote(), durationVelocity);
         }
     }
 
