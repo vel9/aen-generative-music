@@ -90,7 +90,7 @@ public class Scale {
 
     @Override
     public String toString(){
-        return Arrays.toString(this.baseNotes);
+        return "baseNotes: " + Arrays.toString(this.baseNotes) + ", all Notes: " + getNotes();
     }
 
 }
