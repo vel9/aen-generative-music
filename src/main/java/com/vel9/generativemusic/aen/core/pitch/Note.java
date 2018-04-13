@@ -1,21 +1,6 @@
-/*
-<This Java Class is part of the jMusic API version 1.5, March 2004.>
-
-Copyright (C) 2000 Andrew Sorensen & Andrew Brown
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or any
-later version.
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public Licens
-along with this program; if not, write to the Free Software
-Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-*/
 package com.vel9.generativemusic.aen.core.pitch;
+
+import java.util.Objects;
 
 public class Note {
 
@@ -54,10 +39,6 @@ public class Note {
         return this.value;
     }
 
-    public void setValue(int value){
-        this.value = value;
-    }
-
     private String getNoteLiteralValue(){
         switch(this.value % 12){
             case 0: return "C";
@@ -79,6 +60,30 @@ public class Note {
     @Override
     public String toString(){
         return "[Note value: " + String.valueOf(this.value) + ", " + getNoteLiteralValue() + "]";
+    }
+
+    @Override
+    public boolean equals(Object other){
+        // ref: https://www.sitepoint.com/implement-javas-equals-method-correctly/
+        // self check
+        if (this == other) {
+            return true;
+        }
+        // null check
+        if (other == null) {
+            return false;
+        }
+        // type check and cast
+        if (getClass() != other.getClass()) {
+            return false;
+        }
+        Note otherNote = (Note) other;
+        return Objects.equals(this.getValue(), otherNote.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getValue());
     }
 
 }
