@@ -1,6 +1,6 @@
 package com.vel9.generativemusic.aen.core.support;
 
-/* Container for holding duration, velocity values and the silent indicator */
+/* Container for holding time, velocity values and the silent indicator */
 public class DurationVelocity {
 
     private int duration;
@@ -22,4 +22,9 @@ public class DurationVelocity {
     }
 
     public boolean isSilence() { return this.silence; }
+
+    @Override
+    public String toString(){
+        return this.duration + " " + this.velocity;
+    }
 }

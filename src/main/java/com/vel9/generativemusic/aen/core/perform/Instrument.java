@@ -11,7 +11,7 @@ import java.util.TimerTask;
  * Takes musical data provided by the MelodySource
  * and sends the data to the Performer (which handles more low-level detail like the MIDI communication)
  * This class contains a TimerTask which schedules an execution of a provided
- * musical event for the provided duration.
+ * musical event for the provided time.
  */
 public class Instrument {
 

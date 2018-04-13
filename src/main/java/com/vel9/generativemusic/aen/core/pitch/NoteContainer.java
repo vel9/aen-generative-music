@@ -5,7 +5,7 @@ import com.vel9.generativemusic.aen.core.support.DurationVelocity;
 /**
  * Provides a holder class for all of the information which is required
  * in order to create a complete MIDI message, in addition to providing
- * the duration for how long a note should be played.
+ * the time for how long a note should be played.
  */
 public class NoteContainer {
     private Note note;
@@ -23,4 +23,10 @@ public class NoteContainer {
     public DurationVelocity getDurationVelocity(){
         return this.durationVelocity;
     }
+
+    @Override
+    public String toString(){
+        return note.toString() + " " + durationVelocity.toString();
+    }
+
 }

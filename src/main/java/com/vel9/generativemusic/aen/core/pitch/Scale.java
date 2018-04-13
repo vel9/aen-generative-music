@@ -70,6 +70,14 @@ public class Scale {
         return fixedNotes;
     }
 
+    public static Scale buildScaleFromNotes(List<Note> notes){
+        int[] noteVals = new int[notes.size()];
+        for (int i = 0; i < notes.size(); i++){
+            noteVals[i] = notes.get(0).getValue();
+        }
+        return createNonTransposingScale(noteVals);
+    }
+
     public int scaleSize(){
         if (this.scaleType == ScaleType.NONTRANSPOSING){
             return allNotes.size();

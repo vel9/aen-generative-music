@@ -50,7 +50,7 @@ public class RhythmicElement {
         return MINUTE_IN_MILLIS/(tempoBmp/4);
     }
 
-    /* algorithm for providing the duration, in milliseconds, of RhythmicElement given current tempo */
+    /* algorithm for providing the time, in milliseconds, of RhythmicElement given current tempo */
     public int getDuration(int tempoBpm){
         final int wholeNoteValInMillis = getWholeNoteValueInMillis(tempoBpm);
         int duration = 0;
