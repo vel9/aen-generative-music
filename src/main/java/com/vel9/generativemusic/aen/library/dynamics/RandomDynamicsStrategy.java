@@ -14,7 +14,7 @@ public class RandomDynamicsStrategy implements DynamicsStrategy, DaemonCallback 
     private static final Logger LOG = LoggerFactory.getLogger(RandomDynamicsStrategy.class);
 
     /* note: this impl provides a strong accent on the start of a sequence */
-    private static final int ACCENT = 10; //TODO: could return accent value from a method
+    private static final int ACCENT = 10;
 
     private final int minVelocity;
     private final int maxVelocity;

@@ -16,7 +16,7 @@ public class RandomDirectionalJumpSelector {
 
     private Queue<Note> queue = new LinkedList<>();
 
-    RandomDirectionalJumpSelector(int maxJump, Note anchorNote, BalancedRandomIntervalSequence balancedRandomIntervalSequence){
+    public RandomDirectionalJumpSelector(int maxJump, Note anchorNote, BalancedRandomIntervalSequence balancedRandomIntervalSequence){
         this.maxJump = maxJump;
         this.prevNote = anchorNote;
         this.balancedRandomIntervalSequence = balancedRandomIntervalSequence;
@@ -24,12 +24,12 @@ public class RandomDirectionalJumpSelector {
 
     /**
      * Returns next note from the provided list of notes
-     * Uses the "previous" note as an "anchor" for selecting the next note
+     * Uses the "previous" note as an anchor for selecting the next note
      *
      * Note that the algorithm does not select from the provided list of notes
      * until the queue is empty. This was done so that each "sequence" is completed
      * within the scale provided at the start of the sequence. There's no "technical"
-     * reason for this, other than its a simpler implementation and the resulting melodies
+     * reason for this, other than it's a simpler implementation and the resulting melodies
      * seem to sound better to my ears.
      *
      * @param notes list of Notes
@@ -55,9 +55,9 @@ public class RandomDirectionalJumpSelector {
     }
 
     /**
-     * Finds the closest note to the previous note in provided list and set as previous note,
+     * Finds the closest note to the previous note in provided list and sets as previous note,
      * Useful for the case where previously played note is no longer in the new list of notes
-     * Can happen in the case of scale changes
+     * this can happen in the case of scale changes
      *
      * @param notes list of Notes
      */
@@ -127,4 +127,11 @@ public class RandomDirectionalJumpSelector {
     private Map<Note, Integer> getNotesAsMap(List<Note> notes) {
         return IntStream.range(0, notes.size()).boxed().collect(Collectors.toMap(notes::get, i -> i));
     }
+
+    public void clearQueuedNotes(){
+        if (!this.queue.isEmpty()){
+            this.queue.clear();
+        }
+    }
+
 }

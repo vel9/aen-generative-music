@@ -49,6 +49,7 @@ public class RandomRhythmStrategy implements RhythmStrategy {
         if (this.sequenceElementIndex == elements.length){
             this.sequenceElementIndex = 0; // reset
             this.sequenceIndex = Util.getRandom(0, this.rhythmicSequences.size() - 1);
+            
         }
     }
 

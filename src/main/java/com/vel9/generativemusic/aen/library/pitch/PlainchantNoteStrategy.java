@@ -18,8 +18,7 @@ public class PlainchantNoteStrategy implements NoteStrategy {
         this.scaleStrategy = scaleStrategy;
         Note anchorNote = getAnchoNote(scaleStrategy);
         int maxJump = getMaxJump(scaleStrategy);
-        BalancedRandomIntervalSequence balancedRandomIntervalSequence = new BalancedRandomIntervalSequence(getIntervalSequences());
-
+        BalancedRandomIntervalSequence balancedRandomIntervalSequence = getBalancedRandomIntervalSequence();
         this.randomSelector = new RandomDirectionalJumpSelector(maxJump, anchorNote, balancedRandomIntervalSequence);
     }
 
@@ -40,6 +39,10 @@ public class PlainchantNoteStrategy implements NoteStrategy {
     private int getMaxJump(ScaleStrategy scaleStrategy) {
         //-1 so we don't include a higher octave version of the starting note
         return scaleStrategy.getScale().scaleSize() - 1;
+    }
+
+    public static BalancedRandomIntervalSequence getBalancedRandomIntervalSequence(){
+        return new BalancedRandomIntervalSequence(getIntervalSequences());
     }
 
     /* builds lst of plainchant intervals to be used */

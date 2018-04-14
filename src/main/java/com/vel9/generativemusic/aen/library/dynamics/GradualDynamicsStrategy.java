@@ -60,6 +60,6 @@ public class GradualDynamicsStrategy implements DynamicsStrategy, DaemonCallback
             this.velocity--;
         }
 
-        LOG.debug("current velocity: " + this.velocity);
+        LOG.trace("current velocity: " + this.velocity);
     }
 }
