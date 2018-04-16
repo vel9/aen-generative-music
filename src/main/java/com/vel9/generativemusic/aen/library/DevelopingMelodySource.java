@@ -102,7 +102,6 @@ public class DevelopingMelodySource implements MelodySource {
             // develop theme
             MelodySequence developedTheme = pitchDevelopmentStrategy.develop(transposedMelodySequence, scaleContainer);
             List<NoteContainer> noteContainers = toNoteContainers(developedTheme);
-            LOG.debug("noteContainers " + noteContainers);
 
             this.queue.addAll(noteContainers);
             this.themeProvider.updateTheme(developedTheme);

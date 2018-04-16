@@ -29,4 +29,21 @@ public enum NoteType {
         return this.value;
     }
 
+    public static NoteType[] uniqueValues(){
+        return new NoteType[]{
+                C,
+                C_SHARP,
+                D,
+                D_SHARP,
+                E,
+                F,
+                F_SHARP,
+                G,
+                G_SHARP,
+                A,
+                A_SHARP,
+                B
+        };
+    }
+
 }
