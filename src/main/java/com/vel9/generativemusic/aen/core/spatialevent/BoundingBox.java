@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.aen.core.geoevent;
+package com.vel9.generativemusic.aen.core.spatialevent;
 
 /**
  * Represents corner points, with latitude and logitude values, making up a "box" overlaid on a map

@@ -1,9 +1,9 @@
-package com.vel9.generativemusic.aen.core.geoevent;
+package com.vel9.generativemusic.aen.core.spatialevent;
 
-public interface GeoEventConverterStrategy {
+public interface SpatialEventConverterStrategy {
 
     /**
-     * Converts a a GeoEvent within a bounding box to a NoteLocation
+     * Converts a a SpatialEvent within a bounding box to a NoteLocation
      *
      * Implementations could provide pan and velocity values based on where
      * an event occurred within a bounding box
@@ -15,7 +15,7 @@ public interface GeoEventConverterStrategy {
      * @param boundingBox bounding box within which the event occurred
      * @return musical instruction representing event's location within bounding box
      */
-    NoteLocation toMusicalInstruction(GeoEvent event, BoundingBox boundingBox);
+    NoteLocation toMusicalInstruction(SpatialEvent event, BoundingBox boundingBox);
 
     /**
      * Returns the maximum pan value which may be provided by the implementation

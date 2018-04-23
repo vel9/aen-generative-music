@@ -1,4 +1,4 @@
-package com.vel9.generativemusic.aen.core.geoevent;
+package com.vel9.generativemusic.aen.core.spatialevent;
 
 /**
  * Simple container representing a note's location

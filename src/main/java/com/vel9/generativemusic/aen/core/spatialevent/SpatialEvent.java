@@ -1,18 +1,18 @@
-package com.vel9.generativemusic.aen.core.geoevent;
+package com.vel9.generativemusic.aen.core.spatialevent;
 
 /**
- * Simple container for a "geo event"
+ * Simple container for a "spatial event"
  *
  * Contains its location, timestamp and the source
  *
  */
-public class GeoEvent {
+public class SpatialEvent {
 
     private Location location;
     private long timestamp;
     private String source;
 
-    public GeoEvent(Location location, long timestamp, String source) {
+    public SpatialEvent(Location location, long timestamp, String source) {
         this.location = location;
         this.timestamp = timestamp;
         this.source = source;
@@ -33,7 +33,7 @@ public class GeoEvent {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("geoevent: ").append(location).append(System.lineSeparator());
+        sb.append("spatialevent: ").append(location).append(System.lineSeparator());
         sb.append("timestamp: ").append(timestamp).append(System.lineSeparator());
         sb.append("source: ").append(source).append(System.lineSeparator());
         return sb.toString();
