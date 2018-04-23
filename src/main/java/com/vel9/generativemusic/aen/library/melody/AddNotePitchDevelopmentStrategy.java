@@ -7,6 +7,7 @@ import com.vel9.generativemusic.aen.core.pitch.Note;
 import com.vel9.generativemusic.aen.core.util.Util;
 import com.vel9.generativemusic.aen.library.pitch.PlainchantNoteStrategy;
 import com.vel9.generativemusic.aen.library.pitch.RandomDirectionalJumpSelector;
+import org.apache.commons.lang3.Validate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class AddNotePitchDevelopmentStrategy implements PitchDevelopmentStrategy
     private int maxNumNotesToAdd;
 
     public AddNotePitchDevelopmentStrategy(int maxNumNotesToAdd){
-        Util.state(maxNumNotesToAdd > 0, "maxNumNotesToAdd must be greater than 0");
+        Validate.validState(maxNumNotesToAdd > 0, "maxNumNotesToAdd must be greater than 0");
         this.maxNumNotesToAdd = maxNumNotesToAdd;
     }
 

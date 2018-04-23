@@ -19,6 +19,7 @@ import com.vel9.generativemusic.aen.library.melody.ScaleContainer;
 import com.vel9.generativemusic.aen.library.melody.StartingNoteProviderStrategy;
 import com.vel9.generativemusic.aen.library.pitch.PlainchantNoteStrategy;
 import com.vel9.generativemusic.aen.library.pitch.RandomDirectionalJumpSelector;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +51,8 @@ public class DevelopingMelodySource implements MelodySource {
                                   List<RhythmicSequence> rhythmicSequences,
                                   int minNote,
                                   int maxNote){
-        Util.state(pitchDevelopmentStrategies.length > 0, "Must provide more than one pitchDevelopmentStrategy");
+        Validate.validState(pitchDevelopmentStrategies.length > 0,
+                "Must provide more than one pitchDevelopmentStrategy");
         this.pitchDevelopmentStrategies = pitchDevelopmentStrategies;
         this.tempoStrategy = tempoStrategy;
         this.rhythmStrategy = StrategyFactory.getRhythmStrategy(tempoStrategy, dynamicsStrategy, rhythmicSequences);

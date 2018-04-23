@@ -6,6 +6,7 @@ import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.aen.core.time.TempoStrategy;
 import com.vel9.generativemusic.aen.core.util.Util;
 import com.vel9.generativemusic.aen.library.pitch.PlainchantNoteStrategy;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,9 +98,9 @@ public class VariablePeakTempoStrategy implements TempoStrategy, DaemonCallback 
                           int minBpmUpper,
                           int maxBpmLower,
                           int maxBpmUpper) {
-        Util.state(minBpmLower <= minBpmUpper, "min lower bound must be less than or equal to min upper bound");
-        Util.state(maxBpmLower <= maxBpmUpper, "max lower bound must be less than or equal to max upper bound");
-        Util.state(minBpmUpper <= maxBpmLower, "min upper bound must be less than or equal to max lower bound");
+        Validate.validState(minBpmLower <= minBpmUpper, "min lower bound must be less than or equal to min upper bound");
+        Validate.validState(maxBpmLower <= maxBpmUpper, "max lower bound must be less than or equal to max upper bound");
+        Validate.validState(minBpmUpper <= maxBpmLower, "min upper bound must be less than or equal to max lower bound");
     }
 
 }

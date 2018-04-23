@@ -6,6 +6,7 @@ import com.vel9.generativemusic.aen.core.support.Direction;
 import com.vel9.generativemusic.aen.core.support.RegularIntervalDaemon;
 import com.vel9.generativemusic.aen.core.time.RhythmicSequence;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,9 +103,9 @@ public class VariablePeakDynamicsStrategy implements DynamicsStrategy, DaemonCal
                           int minVelocityUpper,
                           int maxVelocityLower,
                           int maxVelocityUpper) {
-        Util.state(minVelocityLower <= minVelocityUpper, "min lower bound must be less than or equal to min upper bound");
-        Util.state(maxVelocityLower <= maxVelocityUpper, "max lower bound must be less than or equal to max upper bound");
-        Util.state(minVelocityUpper <= maxVelocityLower, "min upper bound must be less than or equal to max lower bound");
+        Validate.validState(minVelocityLower <= minVelocityUpper, "min lower bound must be less than or equal to min upper bound");
+        Validate.validState(maxVelocityLower <= maxVelocityUpper, "max lower bound must be less than or equal to max upper bound");
+        Validate.validState(minVelocityUpper <= maxVelocityLower, "min upper bound must be less than or equal to max lower bound");
     }
 
 }

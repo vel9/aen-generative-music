@@ -2,7 +2,7 @@ package com.vel9.generativemusic.aen.core.melody;
 
 import com.vel9.generativemusic.aen.core.pitch.Note;
 import com.vel9.generativemusic.aen.core.time.RhythmicElement;
-import com.vel9.generativemusic.aen.core.util.Util;
+import org.apache.commons.lang3.Validate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,8 @@ public class MelodySequence {
     private List<MelodyElement> melodyElements;
 
     public MelodySequence(List<MelodyElement> melodyElements){
-        Util.state(melodyElements != null && melodyElements.size() > 1, "Must provide more than 1 element");
+        Validate.validState(melodyElements != null && melodyElements.size() > 1,
+                "Must provide more than 1 element");
         this.melodyElements = melodyElements;
     }
 
@@ -31,7 +32,8 @@ public class MelodySequence {
     }
 
     public static MelodySequence buildMelodySequence(int[] noteVals, RhythmicElement[] rhythmicElements){
-        Util.state(noteVals.length == rhythmicElements.length, "noteVals and rhythmicElements must have same length");
+        Validate.validState(noteVals.length == rhythmicElements.length,
+                "noteVals and rhythmicElements must have same length");
         List<MelodyElement> elements = new ArrayList<>();
         for (int i = 0; i < noteVals.length; i++){
             elements.add(new MelodyElement(Note.create(noteVals[i]),

@@ -2,6 +2,7 @@ package com.vel9.generativemusic.aen.library.pitch;
 
 import com.vel9.generativemusic.aen.core.pitch.IntervalSequence;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.apache.commons.lang3.Validate;
 
 import java.util.List;
 
@@ -33,10 +34,10 @@ public class BalancedRandomIntervalSequence implements IntervalSequence {
             } else if (directionalSum == -1){
                 numDownwardSequences++;
             } else {
-                Util.state(directionalSum == 0, "directionalSum for the intervalSequence must be 0, 1, or -1");
+                Validate.validState(directionalSum == 0, "directionalSum for the intervalSequence must be 0, 1, or -1");
             }
         }
-        Util.state(numUpwardSequences == numDownwardSequences,
+        Validate.validState(numUpwardSequences == numDownwardSequences,
                 "number of upward sequences must equal number of downward sequences");
     }
 

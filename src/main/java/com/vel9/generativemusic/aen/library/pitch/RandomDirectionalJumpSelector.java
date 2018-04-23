@@ -2,6 +2,7 @@ package com.vel9.generativemusic.aen.library.pitch;
 
 import com.vel9.generativemusic.aen.core.pitch.Note;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.apache.commons.lang3.Validate;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,7 +37,8 @@ public class RandomDirectionalJumpSelector {
      * @return next Note
      */
     public Note next(List<Note> notes) {
-        Util.state(notes != null && notes.size() > 1, "must provide a list of notes with a size greater than 1");
+        Validate.validState(notes != null && notes.size() > 1,
+                "must provide a list of notes with a size greater than 1");
         Map<Note,Integer> notesByIndex = getNotesAsMap(notes);
         setupPrevNoteAndPrevIndex(notes);
         while (this.queue.isEmpty()){
@@ -62,7 +64,7 @@ public class RandomDirectionalJumpSelector {
      * @param notes list of Notes
      */
     private void setupPrevNoteAndPrevIndex(List<Note> notes) {
-        Util.state(this.prevNote != null, "prevNote can't be null");
+        Validate.validState(this.prevNote != null, "prevNote can't be null");
         for (int i = 1; i < notes.size(); i++) {
             if (notes.get(i).getValue() > this.prevNote.getValue()){
                 this.prevNote = notes.get(i - 1);

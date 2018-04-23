@@ -3,6 +3,7 @@ package com.vel9.generativemusic.aen.library.melody;
 import com.vel9.generativemusic.aen.core.melody.MelodySequence;
 import com.vel9.generativemusic.aen.core.melody.ThemeProvider;
 import com.vel9.generativemusic.aen.core.util.Util;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,9 +21,9 @@ public class SimpleThemeProvider implements ThemeProvider {
     private int themeSelectionPercentage;
 
     public SimpleThemeProvider(MelodySequence theme, int themeSelectionPercentage){
-        Util.state(themeSelectionPercentage > 0 && themeSelectionPercentage < 100,
+        Validate.validState(themeSelectionPercentage > 0 && themeSelectionPercentage < 100,
                 "theme selection percentage must be between 1 to 99");
-        Util.state(theme != null, "theme must not be null");
+        Validate.validState(theme != null, "theme must not be null");
         this.themes[0] = theme;
         this.themes[1] = theme;
         this.themeSelectionPercentage = themeSelectionPercentage;

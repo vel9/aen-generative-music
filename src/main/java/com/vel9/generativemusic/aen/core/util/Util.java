@@ -15,10 +15,4 @@ public class Util {
         return Constants.SECOND_IN_MILLIS * numSeconds;
     }
 
-    public static void state(boolean expression, String message){
-        if (!expression){
-            throw new IllegalStateException(message);
-        }
-    }
-
 }
