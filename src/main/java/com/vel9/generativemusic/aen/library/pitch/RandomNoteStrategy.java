@@ -7,9 +7,6 @@ import com.vel9.generativemusic.aen.core.util.Util;
 
 import java.util.List;
 
-/**
- * Created by levani on 12/26/16.
- */
 public class RandomNoteStrategy implements NoteStrategy {
 
     private ScaleStrategy scaleStrategy;

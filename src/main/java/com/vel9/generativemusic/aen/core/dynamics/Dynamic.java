@@ -1,8 +1,5 @@
 package com.vel9.generativemusic.aen.core.dynamics;
 
-/**
- * Created by levani on 12/5/16.
- */
 public enum Dynamic {
     PPPP(10),
     PPP(20),

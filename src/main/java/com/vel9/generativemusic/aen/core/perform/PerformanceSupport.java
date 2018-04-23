@@ -20,7 +20,7 @@ public class PerformanceSupport {
     private static final Logger LOG = LoggerFactory.getLogger(PerformanceSupport.class);
 
     /* initializes the MIDI Receiver */
-    static{
+    static {
         initMidiReceiver();
     }
 
@@ -43,9 +43,9 @@ public class PerformanceSupport {
         StringBuilder sb = new StringBuilder();
         for (MidiDevice.Info info : MidiSystem.getMidiDeviceInfo()){
             try {
-                sb.append(info.getName() + " - " + MidiSystem.getMidiDevice(info).getClass().getSimpleName() + "; ");
+                sb.append(info.getName()).append(" - ");
+                sb.append(MidiSystem.getMidiDevice(info).getClass().getSimpleName()).append("; ");
             } catch (MidiUnavailableException e) {
-                e.printStackTrace();
                 throw new IllegalStateException(e);
             }
         }

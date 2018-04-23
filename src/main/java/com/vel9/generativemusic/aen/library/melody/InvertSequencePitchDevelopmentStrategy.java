@@ -39,7 +39,7 @@ public class InvertSequencePitchDevelopmentStrategy implements PitchDevelopmentS
         int lastValue = startingElement.getNote().getValue();
         inverted.add(startingElement);
         for (int i = 1; i < elements.size(); i++){
-            MelodyElement element = elements.get(i);;
+            MelodyElement element = elements.get(i);
             int invertedValue = lastValue + relativeIntervalSequence[i] * -1;
             if (invertedValue < this.minNote || invertedValue > this.maxNote){
                 return melodySequence;

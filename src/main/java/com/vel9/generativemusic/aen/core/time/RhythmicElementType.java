@@ -1,8 +1,5 @@
 package com.vel9.generativemusic.aen.core.time;
 
-/**
- * Created by levani on 12/8/16.
- */
 public enum RhythmicElementType {
     WHOLE,
     HALF,
@@ -16,5 +13,5 @@ public enum RhythmicElementType {
     THIRYSECOND,
     THIRTYSECOND_T,
     SIXTYFOURTH,
-    SIXTYFOURTH_T;
+    SIXTYFOURTH_T
 }
