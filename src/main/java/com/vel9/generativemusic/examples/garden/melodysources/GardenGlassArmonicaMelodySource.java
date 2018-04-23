@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by levani on 12/12/16.
- */
 public class GardenGlassArmonicaMelodySource {
 
     public static MelodySource getMelody(){

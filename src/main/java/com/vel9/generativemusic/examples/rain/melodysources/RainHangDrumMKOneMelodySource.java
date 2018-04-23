@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by levani on 12/25/16.
- */
 public class RainHangDrumMKOneMelodySource {
 
     public static MelodySource getMelody(){
