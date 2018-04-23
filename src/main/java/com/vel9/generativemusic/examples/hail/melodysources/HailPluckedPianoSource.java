@@ -32,14 +32,14 @@ public class HailPluckedPianoSource {
 
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{
-                new Scale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.E, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.C_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.E, minNote, maxNote),
         };
     }
 

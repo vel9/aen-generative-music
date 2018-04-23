@@ -33,13 +33,13 @@ public class GardenHarmoniumMelodySource {
 
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{
-                new Scale(BaseScale.MAJOR, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.G, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.A, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.E, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.B, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.F_SHARP, minNote, maxNote)
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.G, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.A, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.E, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.B, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.F_SHARP, minNote, maxNote)
         };
     }
 

@@ -32,15 +32,16 @@ public class GardenGlockenMelodySource {
     }
 
     private static Scale[] getScales(int minNote, int maxNote){
-        return new Scale[]{new Scale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.A_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.F_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.D_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.B_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.D, minNote, maxNote)
+        return new Scale[]{
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.A_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.F_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.D_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.B_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.D, minNote, maxNote)
         };
     }
 

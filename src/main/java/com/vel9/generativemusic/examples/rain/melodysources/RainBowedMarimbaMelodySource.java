@@ -32,12 +32,12 @@ public class RainBowedMarimbaMelodySource {
 
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{
-                new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.E_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE2, NoteType.C_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.E_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE2, NoteType.C_SHARP, minNote, maxNote),
         };
     }
 

@@ -32,13 +32,14 @@ public class HailCopenhagenMelodySource {
     }
 
     private static Scale[] getScales(int minNote, int maxNote){
-        return new Scale[]{new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.A_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.D_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.B_FLAT, minNote, maxNote)
+        return new Scale[]{
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.A_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.D_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.B_FLAT, minNote, maxNote)
         };
     }
 

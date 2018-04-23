@@ -30,25 +30,25 @@ public class RainMarimbaMelodySource {
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{
                 // mode 3
-                new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.E, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.F, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.G_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.G, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.E, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.F, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.G_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.G, minNote, maxNote),
                 // mode 6
-                new Scale(BaseScale.MODE6, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.C_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.E_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.C_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.E_FLAT, minNote, maxNote),
                 // major
-                new Scale(BaseScale.MAJOR, NoteType.B_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.A_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.E_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.E, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.C, minNote, maxNote)
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.B_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.A_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.E_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.E, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.C, minNote, maxNote)
         };
     }
 

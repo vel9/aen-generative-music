@@ -32,15 +32,15 @@ public class HailMalletPianoSource {
 
     private static Scale[] getScales(int minNote, int maxNote){
         return new Scale[]{
-                new Scale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MAJOR, NoteType.A_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
-                new Scale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.C, minNote, maxNote),
-                new Scale(BaseScale.MODE6, NoteType.D, minNote, maxNote)
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MINOR, NoteType.F_SHARP, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MAJOR, NoteType.A_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.D, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE3, NoteType.E_FLAT, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.C, minNote, maxNote),
+                Scale.createTransposingScale(BaseScale.MODE6, NoteType.D, minNote, maxNote)
         };
     }
 

@@ -28,15 +28,13 @@ public class Scale {
         return new Scale(noteVals);
     }
 
-    //TODO: reduce visibility
-    public Scale(BaseScale baseScale, NoteType startingNote, int minNote, int maxNote){
+    private Scale(BaseScale baseScale, NoteType startingNote, int minNote, int maxNote){
         this.scaleType = ScaleType.TRANSPOSING;
         this.baseNotes = baseScale.getBaseNotes();
         this.allNotes = buildAllNotes(baseNotes, startingNote, minNote, maxNote);
     }
 
-    //TODO: reduce visibility
-    public Scale(int... noteVals){
+    private Scale(int... noteVals){
         this.scaleType = ScaleType.NONTRANSPOSING;
         this.baseNotes = null;
         this.allNotes = buildFixedNotes(noteVals);
