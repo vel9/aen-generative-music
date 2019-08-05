@@ -9,9 +9,9 @@ import com.vel9.generativemusic.aen.core.time.RhythmStrategy;
 import com.vel9.generativemusic.aen.core.time.RhythmicSequence;
 import com.vel9.generativemusic.aen.core.time.TempoStrategy;
 import com.vel9.generativemusic.aen.core.util.Util;
-import com.vel9.generativemusic.aen.library.StrategyFactory;
 import com.vel9.generativemusic.aen.library.SimpleMelodySource;
-import com.vel9.generativemusic.aen.library.time.DeciTalaRhythmicSequence;
+import com.vel9.generativemusic.aen.library.StrategyFactory;
+import com.vel9.generativemusic.examples.rain.library.time.ExampleRhythmicSequences;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +32,7 @@ public class RainHangDrumMKOneMelodySource {
 
     private static List<RhythmicSequence> getRhythmicSequences(){
         List<RhythmicSequence> rhythmicSequences = new ArrayList<>();
-        rhythmicSequences.addAll(Arrays.asList(DeciTalaRhythmicSequence.values()));
+        rhythmicSequences.addAll(Arrays.asList(ExampleRhythmicSequences.values()));
         return rhythmicSequences;
     }
 
